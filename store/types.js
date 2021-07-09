@@ -1,0 +1,1 @@
+export const FILTER_PANEL = 'FILTER_PANEL'
