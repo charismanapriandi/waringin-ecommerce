@@ -1,9 +1,13 @@
 import Image from 'next/image'
+import { useDispatch } from 'react-redux'
+import { openProductDetile } from '../../store/actions/statusAction'
 import { Button, Gap } from '../atoms'
 
 const ProductCard = () => {
+    const dispatch = useDispatch()
+
     return (
-        <div className="w-64 border border-background-800 rounded-3xl overflow-hidden mb-2">
+        <div className="w-64 border border-background-800 rounded-3xl overflow-hidden mb-2 mx-1">
             <div className="w-60 h-60 overflow-hidden mx-auto mt-2 rounded-2xl relative">
                 <Image 
                     src="/iphone.jpg"
@@ -20,8 +24,8 @@ const ProductCard = () => {
                     <p className="">Rp. 20.000.000</p>
                 </div>
                 <Gap height={10} />
-                <Button>
-                    tambahkan ke keranjang
+                <Button onClick={() => dispatch(openProductDetile())}>
+                    lihat detail produk
                 </Button>
             </div>
         </div>

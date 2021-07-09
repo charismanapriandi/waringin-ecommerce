@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.c-checkbox {
+.c-checkbox, .c-radio {
   display: none;
+}
+
+.product-detile {
+  height: calc(100vh - 5vh);
 }

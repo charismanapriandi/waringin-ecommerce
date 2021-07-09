@@ -5,7 +5,7 @@ import { Input, Gap, Button } from '..'
 
 const Filter = ({ children }) => {
     const [isChecked, setIsChecked] = useState(false)
-    const filterPanelOpen = useSelector(state => state.global.filterPanelOpen)
+    const filterPanel = useSelector(state => state.status.filter_panel)
 
     const checkboxList = [
         {

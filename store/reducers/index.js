@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import globalReducer from "./globalReducer";
+import global from "./globalReducer";
+import status from "./statusReducer";
 
 export default combineReducers({
-    global: globalReducer
+    global: global,
+    status: status
 })

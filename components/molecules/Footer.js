@@ -4,10 +4,25 @@ const Footer = () => {
     return (
         <footer className="flex bg-background-900">
             <Container>
-                <div className="flex">
-                    <p>Footer</p>
-                    <p>Footer</p>
-                    <p>Footer</p>
+                <div className="flex justify-around p-4">
+                    <ul>
+                        <li className="font-bold text-xl">Brand</li>
+                        <li>Link</li>
+                        <li>Link</li>
+                        <li>Link</li>
+                    </ul>
+                    <ul>
+                        <li>Link</li>
+                        <li>Link</li>
+                        <li>Link</li>
+                        <li>Link</li>
+                    </ul>
+                    <ul>
+                        <li>Link</li>
+                        <li>Link</li>
+                        <li>Link</li>
+                        <li>Link</li>
+                    </ul>
                 </div>
             </Container>
         </footer>

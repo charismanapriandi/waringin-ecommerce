@@ -1,1 +1,4 @@
-export const FILTER_PANEL = 'FILTER_PANEL'
+export const FILTER_PANEL_STATUS = 'FILTER_PANEL'
+
+// Statuses 
+export const PRODUCT_DETILE_STATUS = 'PRODUCT_DETILE_STATUS'
