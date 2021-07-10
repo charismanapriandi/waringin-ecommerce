@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Input, Container, ProductCard, Gap, Sorter, Button, ProductDetile } from '../components'
+import { Input, Container, CardProduct, Gap, Sorter, Button, ProductDetile } from '../components'
 import usePosition from '../hook/usePosition'
 import { openFilter } from '../store/actions/statusAction'
 
@@ -27,22 +27,21 @@ const Home = () => {
                 <Sorter />
                 <Gap height={30} />
                 <div className="flex flex-wrap justify-center">
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
                 </div>
             </Container>
-            <ProductDetile>
-                ss
-            </ProductDetile>
+
+            <ProductDetile />
         </>
     )
 }

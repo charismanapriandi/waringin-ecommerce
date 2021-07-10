@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { DropdownRight, Gap } from '..'
 import { Button } from '../atoms'
+import ConfirmationDelete from './ConfirmationDelete'
 import DropdownCenter from './DropdownCenter'
 
 const CardCart = () => {
@@ -78,24 +79,7 @@ const CardCart = () => {
                     </div>
                 </DropdownRight>
                 <Gap height={20} />
-                <div className={`${confirm ? 'hidden' : 'ml-10'}`}>
-                    <Button danger={true} onClick={() => {
-                        setConfirm(true)
-                        setTimeout(() => {
-                            setConfirm(false)
-                        }, 5000)}}>
-                        <FontAwesomeIcon icon={faTrashAlt} />
-                    </Button>
-                </div>
-                <div className={`${confirm ? 'flex' : 'hidden'}`}>
-                    <Button onClick={() => setConfirm(false)}>
-                        Batal
-                    </Button>
-                    <Gap width={10} />
-                    <Button danger={true}>
-                        Yakin
-                    </Button>
-                </div>
+                <ConfirmationDelete />
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import Navbar from './Navbar'
 import Layout from './Layout'
 import Container from './Container'
-import ProductCard from './ProductCard'
+import CardProduct from './CardProduct'
 import Filter from './Filter'
 import Sorter from './Sorter'
 import MyScrollbar from './Scrollbar'
@@ -14,12 +14,15 @@ import Blocker from './Blocker'
 import FormLogin from './FormLogin'
 import Error from './Error'
 import CardCart from './CardCart'
+import CardWishlist from './CardWishlist'
+import ConfirmationDelete from './ConfirmationDelete'
+import LiveChat from './LivaChat'
 
 export { 
     Navbar,
     Layout,
     Container,
-    ProductCard,
+    CardProduct,
     Filter,
     Sorter,
     MyScrollbar,
@@ -31,5 +34,8 @@ export {
     Blocker,
     FormLogin,
     Error,
-    CardCart
+    CardCart,
+    CardWishlist,
+    ConfirmationDelete,
+    LiveChat
 }

@@ -17,12 +17,12 @@ module.exports = {
       current: 'currentColor',
 
       background: {
-        active: '#EE6139',
+        active: '#289D0B',
         800: '#25262E',
         900: '#090A13',
       },
       text: {
-        active: '#f3a590',
+        active: '#9CFF84',
         800: '#fcfbfc',
         900: "#6D6F80",
       },

@@ -1,11 +1,14 @@
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import { faHeart as faHeartFill } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { openProductDetile } from '../../store/actions/statusAction'
 import { Button, Gap } from '../atoms'
 
-const ProductCard = () => {
+const CardProduct = () => {
+    const [favorite, setFavorite] = useState(false)
     const dispatch = useDispatch()
 
     return (
@@ -19,8 +22,11 @@ const ProductCard = () => {
                     layout="intrinsic"
                 />
                 <div className="absolute top-2 right-2">
-                <Button>
-                    <FontAwesomeIcon icon={faHeart} />
+                <Button onClick={() => setFavorite(!favorite)}>
+                    {favorite 
+                        ? <span className="text-red-600"><FontAwesomeIcon icon={faHeartFill} /></span>
+                        : <FontAwesomeIcon icon={faHeart} />
+                    }
                 </Button>
             </div>
             </div>
@@ -39,4 +45,4 @@ const ProductCard = () => {
     )
 }
 
-export default ProductCard
+export default CardProduct

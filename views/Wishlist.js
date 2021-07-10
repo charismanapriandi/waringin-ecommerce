@@ -1,11 +1,15 @@
-import { Container } from "../components"
+import { CardWishlist, Container, ProductDetile } from "../components"
 
 const Wishlist = () => {
     return (
         <>
             <Container>
-                Halaman Wishlist
+                <CardWishlist />
+                <CardWishlist />
+                <CardWishlist />
             </Container>
+
+            <ProductDetile />
         </>
     )
 }
