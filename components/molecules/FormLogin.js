@@ -17,12 +17,14 @@ const FormLogin = () => {
     return (
         <div className="w-96 ring ring-background-800 p-4 rounded-xl">
             <div className="flex justify-between items-center">
-                <p className="cursor-pointer text-sm">
-                    <FontAwesomeIcon icon={faChevronLeft}/>
-                    <span className="ml-2">
-                        <Link href="/">kembali</Link>
-                    </span>
-                </p>
+                <Link href="/">
+                    <p className="cursor-pointer text-sm">
+                        <FontAwesomeIcon icon={faChevronLeft}/>
+                        <span className="ml-2">
+                            kembali
+                        </span>
+                    </p>
+                </Link>
                 <p>Masuk</p>
             </div>
             <Gap height={20} />

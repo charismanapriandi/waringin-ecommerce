@@ -13,6 +13,7 @@ import Radio from './Radio'
 import Blocker from './Blocker'
 import FormLogin from './FormLogin'
 import Error from './Error'
+import CardCart from './CardCart'
 
 export { 
     Navbar,
@@ -29,5 +30,6 @@ export {
     Radio,
     Blocker,
     FormLogin,
-    Error
+    Error,
+    CardCart
 }
