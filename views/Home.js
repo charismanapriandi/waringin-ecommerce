@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Input, Container, CardProduct, Gap, Sorter, Button, ProductDetile } from '../components'
 import usePosition from '../hook/usePosition'
@@ -7,6 +8,7 @@ const Home = () => {
     const filterPanel = useSelector(state => state.status.filter_panel)
     const dispatch = useDispatch()
     const position = usePosition()
+    const productList = useSelector(state => state.memory.product_list)
 
     return (
         <>
@@ -27,17 +29,15 @@ const Home = () => {
                 <Sorter />
                 <Gap height={30} />
                 <div className="flex flex-wrap justify-center">
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
-                    <CardProduct />
+                    {productList?.map(item => {
+                        return <CardProduct 
+                            key={item.id}
+                            image={item.image}
+                            name={item.name}
+                            price={item.price}
+                            payload={item}
+                        />
+                    })}
                 </div>
             </Container>
 

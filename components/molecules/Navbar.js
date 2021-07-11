@@ -37,8 +37,8 @@ const Navbar = () => {
                                 <NavLink activeClassName="text-text-active font-bold" to="/about">kontak</NavLink>
                             </li> */}
                         </ul>
-                        <div className={`${position > 50 && location.pathname === '/' ? 'ml-0 opacity-100': '-mt-10 opacity-0'} w-full px-10 flex transition-all duration-300`}>
-                            <div className={`${filterPanel ? '-ml-20 opacity-0 pointer-events-none' : 'ml-0 opacity-100 pointer-events-auto'} mr-2 transition-all duration-300`}>
+                        <div className={`${position > 50 && location.pathname === '/' ? 'ml-0 opacity-100 pointer-events-auto': '-mt-10 opacity-0 pointer-events-none'} w-full px-10 flex transition-all duration-300`}>
+                            <div className={`${filterPanel ? '-ml-20 opacity-0' : 'ml-0 opacity-100'} mr-2 transition-all duration-300`}>
                                 <Button 
                                     active={true} 
                                     onClick={() => dispatch(openFilter())}>

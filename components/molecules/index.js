@@ -9,7 +9,6 @@ import Footer from './Footer'
 import DropdownLeft from './DropdownLeft'
 import DropdownRight from './DropdownRight'
 import ProductDetile from './ProductDetile'
-import Radio from './Radio'
 import Blocker from './Blocker'
 import FormLogin from './FormLogin'
 import Error from './Error'
@@ -17,6 +16,7 @@ import CardCart from './CardCart'
 import CardWishlist from './CardWishlist'
 import ConfirmationDelete from './ConfirmationDelete'
 import LiveChat from './LivaChat'
+import Pushdown from './Pushdown'
 
 export { 
     Navbar,
@@ -30,12 +30,12 @@ export {
     DropdownLeft,
     DropdownRight,
     ProductDetile,
-    Radio,
     Blocker,
     FormLogin,
     Error,
     CardCart,
     CardWishlist,
     ConfirmationDelete,
-    LiveChat
+    LiveChat,
+    Pushdown
 }

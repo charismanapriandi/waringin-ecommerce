@@ -7,7 +7,7 @@ import { Button, Gap, Input } from "../atoms"
 import Blocker from "./Blocker"
 import Image from 'next/image'
 
-const IncomingMessage = () => {
+const IncomingMessage = ({ message }) => {
     return (
         <div className="flex py-2">
             <div className="w-10 h-10 relative overflow-hidden rounded-full">
@@ -19,7 +19,7 @@ const IncomingMessage = () => {
             </div>
             <div className="w-auto ml-4 px-4 py-2 bg-background-800 rounded-xl relative">
                 <p className="font-bold mb-2">Admin</p>
-                <p className="">Ullamco voluptate nostrud adipisicing non aute irure do aliquip exercitation pariatur eiusmod.</p>
+                <p className="">{ message }</p>
                 <p className="text-sm text-text-900 float-right mt-2">12.20</p>
                 <span className="absolute -left-2 top-0 text-2xl text-background-800">
                     <FontAwesomeIcon icon={faCaretLeft} />
@@ -29,12 +29,12 @@ const IncomingMessage = () => {
     )
 }
 
-const OutcomingMessage = () => {
+const OutcomingMessage = ({ message }) => {
     return (
         <div className="flex justify-end py-2">
             <div className="w-auto mr-4 px-4 py-2 bg-text-900 rounded-xl relative">
                 <p className="font-bold mb-2">John Doe</p>
-                <p className="">Ullamco voluptate nostrud adipisicing non aute irure do aliquip exercitation pariatur eiusmod.</p>
+                <p className="">{ message }</p>
                 <p className="text-sm text-background-800 float-right mt-2">12.20</p>
                 <span className="absolute -right-2 top-0 text-2xl text-background-800">
                     <FontAwesomeIcon icon={faCaretRight} />
@@ -72,14 +72,14 @@ const LiveChat = () => {
                     </div>
                 </div>
                 <div className="pb-40 p-4 h-screen overflow-y-auto">
-                    <IncomingMessage />  
-                    <OutcomingMessage />
-                    <IncomingMessage />  
-                    <OutcomingMessage />
-                    <IncomingMessage />  
-                    <OutcomingMessage />
-                    <IncomingMessage />  
-                    <OutcomingMessage />
+                    <IncomingMessage message="Pariatur ex exercitation consequat reprehenderit nisi." />  
+                    <OutcomingMessage message="Exercitation dolore et laborum fugiat qui labore." />
+                    <IncomingMessage message="Cillum duis do ea labore id commodo adipisicing aute tempor incididunt ipsum." />  
+                    <OutcomingMessage message="Et pariatur amet reprehenderit cillum excepteur ea." />
+                    <IncomingMessage message="Consectetur magna magna ea reprehenderit id officia ea anim nostrud aute Lorem adipisicing." />  
+                    <OutcomingMessage message="Aute ut culpa qui dolor labore aliqua nulla nostrud consectetur laborum voluptate veniam consequat veniam." />
+                    <IncomingMessage message="Laboris amet excepteur enim voluptate consectetur incididunt exercitation duis dolor labore dolore incididunt labore." />  
+                    <OutcomingMessage message="Consequat tempor laborum ut id consequat et excepteur do ea magna." />
                 </div>
                 <div className="bg-background-800 flex px-4 py-2 absolute bottom-0 w-full">
                     <div className="w-full">

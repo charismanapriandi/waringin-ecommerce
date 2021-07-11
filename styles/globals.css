@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-.c-checkbox, .c-radio {
+/* .c-checkbox,  */
+.c-radio {
   display: none;
+}
+
+.radio-active {
+  @apply bg-background-active;
 }
 
 .product-detile {

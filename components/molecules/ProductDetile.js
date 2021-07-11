@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Button, Gap } from ".."
 import Image from 'next/image'
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
-import Radio from "./Radio"
+import Radio from "../atoms/Radio"
 import DropdownLeft from "./DropdownLeft"
 import { Input } from "../atoms"
 import { useState } from "react"
@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { closeProductDetile } from "../../store/actions/statusAction"
 import Blocker from "./Blocker"
 import DropdownCenter from "./DropdownCenter"
+import useMoney from "../../hook/useMoney"
 
 const ProductDetile = ({ setStatus, children }) => {
     const [isColor, setIsColor] = useState(false)
@@ -18,6 +19,7 @@ const ProductDetile = ({ setStatus, children }) => {
     const [isRam, setIsRam] = useState(false)
     const productDetile = useSelector(state => state.status.product_detile)
     const dispatch = useDispatch()
+    const payload = useSelector(state => state.memory.product_detile_payload)
 
     const color = [
         {
@@ -61,13 +63,13 @@ const ProductDetile = ({ setStatus, children }) => {
                     <div className="w-1/3">
                         <div className="w-64 h-64 relative rounded-xl overflow-hidden mx-auto">
                             <Image
-                                src="/iphone.jpg"
+                                src={"/images/"+payload?.image}
                                 layout="fill"
                                 objectFit="cover"
                             />
                         </div>
                         <Gap height={10} />
-                        <div className="flex justify-center">
+                        {/* <div className="flex justify-center">
                             <div className="w-20 h-20 relative rounded-xl overflow-hidden mx-2 hover:opacity-70 cursor-pointer transition-all duration-300">
                                 <Image
                                     src="/iphone.jpg"
@@ -89,12 +91,12 @@ const ProductDetile = ({ setStatus, children }) => {
                                     objectFit="cover"
                                 />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     {/* RIGHT */}
                     <div className="w-2/3">
-                        <p className="font-bold text-lg">Iphone XR</p>
-                        <p className="mt-2">Officia fugiat eiusmod aliquip sint voluptate ullamco pariatur veniam ipsum quis occaecat occaecat. Incididunt laboris adipisicing non eiusmod sint minim. Aute qui mollit deserunt occaecat pariatur duis quis aliqua sint esse deserunt pariatur. Duis aliqua magna est incididunt esse est aute. Aute reprehenderit esse ullamco anim culpa consectetur. Veniam id adipisicing id et.</p>
+                        <p className="font-bold text-lg">{payload?.name}</p>
+                        <p className="mt-2">{payload?.body}</p>
                         <Gap height={20} />
                         <div className="flex items-center mb-2">
                             <p className="font-bold mr-4">Warna</p>
@@ -154,7 +156,7 @@ const ProductDetile = ({ setStatus, children }) => {
                     </div>
                     <div>
                         <Button active={true}>
-                            <span className="font-bold">20.000.000 </span>- tambahkan ke keranjang
+                            <span className="font-bold mr-4">{useMoney(payload?.price)} </span>tambahkan ke keranjang
                         </Button>
                     </div>
                 </div>

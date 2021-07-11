@@ -4,30 +4,25 @@ import { CheckBox } from '..'
 import { Input, Gap, Button } from '..'
 
 const Filter = ({ children }) => {
-    const [isChecked, setIsChecked] = useState(false)
-    const filterPanel = useSelector(state => state.status.filter_panel)
+    const categoryList = useSelector(state => state.memory.category_list)
+    const [checked, setChecked] = useState([])
 
-    const checkboxList = [
-        {
-            category: 'Android',
-            id: 1,
-        },
-        {
-            category: 'IOS',
-            id: 2,
-        },
-        {
-            category: 'Batre',
-            id: 3,
-        },
-        {
-            category: 'Charger',
-            id: 4,
+    const handleCheckbox = (value) => {
+        const currentIndex = checked.indexOf(value)
+        const newChecked = [...checked]
+        
+        if (currentIndex === -1) {
+            newChecked.push(value)
+        } else {
+            newChecked.splice(currentIndex, 1)
         }
-    ]
-    const handleCheckBoxChange = (e) => {
-        console.log(e.target);
+
+        setChecked(newChecked)
     }
+  
+    // useEffect(()=> {
+    //     console.log(checked)
+    // }, [checked])
 
     return (
         <div>
@@ -37,15 +32,20 @@ const Filter = ({ children }) => {
             </div>
             <p className="font-bold text-lg mt-10">kategori</p>
             <div className="mt-2 ml-2">
-                { checkboxList.map(check => (
-                    <CheckBox 
-                        key={check.id}
-                        checked={isChecked}
-                        name={check.category}
-                        onChange={(e) => handleCheckBoxChange(e)}>
-                        {check.category}
-                    </CheckBox>
-                ))}
+                { categoryList?.map(item => {
+                    return (
+                        <CheckBox 
+                            // active={checked}
+                            key={item.id}
+                            label={item.name}
+                            name={item.name}
+                            onChange={(e) => {
+                                handleCheckbox(item.name)
+                            }}>
+                            {item.name}
+                        </CheckBox>
+                    )
+                })}
             </div>
             <p className="font-bold text-lg mt-10">rentang harga <span className="text-text-900 text-xs">dalam rupiah</span></p>
             <div className="mt-2 flex items-center">

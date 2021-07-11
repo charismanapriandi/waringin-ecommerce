@@ -1,0 +1,60 @@
+[
+    {
+        "id" : 1,
+        "name" : "Charger oppo",
+        "body" : "Incididunt duis non consectetur nulla aliquip exercitation commodo duis tempor. Irure do consectetur occaecat occaecat labore nostrud ex enim anim ipsum quis esse. Culpa incididunt aliqua do ad sint laboris sint incididunt ullamco est esse fugiat cupidatat. Dolore ex voluptate sint ullamco esse id duis pariatur ea. Et velit magna consectetur proident ad minim commodo pariatur esse do excepteur. Adipisicing veniam consequat pariatur sint voluptate occaecat exercitation ullamco culpa ipsum non Lorem quis.",
+        "price" : 15000,
+        "image" : "charger-oppo.jpeg",
+        "category": "Charger",
+        "stock" : 40,
+        "wishlist": false
+    },
+    {
+        "id" : 2,
+        "name" : "Samsung Galaxy S21 Ultra",
+        "body" : "In nisi sunt mollit culpa cillum labore tempor non sunt voluptate quis elit. Officia qui pariatur consequat ex ut sunt ad. Lorem aliqua adipisicing cupidatat non commodo consectetur nostrud pariatur labore magna proident sunt laboris. Adipisicing incididunt laborum commodo elit qui amet aute Lorem. Tempor do mollit esse elit culpa enim deserunt pariatur mollit dolor fugiat aliqua eu. Elit et commodo sint consectetur excepteur laborum culpa officia pariatur. Tempor commodo amet do labore sint qui cupidatat anim laboris enim voluptate duis cillum consectetur.",
+        "price" : 19999000,
+        "image" : "samsung-galaxy-s21-ultra.jpg",
+        "category": "android",
+        "spesification": {
+            "screen": "6.8 inch",
+            "camera" : {
+                "primary" : "108 Gb",
+                "secondary" : "40 Gb"
+            },
+            "internal": "128 Gb",
+            "memory": "8 Gb"
+        }, 
+        "stock" : 12,
+        "wishlist": false
+    },
+    {
+        "id" : 3,
+        "name" : "Iphone 12 Mini",
+        "body" : "Deserunt pariatur fugiat adipisicing commodo cupidatat ad. Ea velit cillum irure ex et cupidatat deserunt pariatur aute voluptate ex velit deserunt est. Est et voluptate officia in do consectetur sint ipsum reprehenderit dolor. Elit excepteur ipsum nostrud Lorem laborum. Dolore amet laborum commodo dolor. Id aliquip fugiat sint labore eu qui laboris dolore.",
+        "price" : 13553000,
+        "image" : "iphone-12-mini.jpg",
+        "category": "IOS",
+        "spesification": {
+            "screen": "5.4 inch",
+            "camera" : {
+                "primary" : "12 Gb",
+                "secondary" : "12 Gb"
+            },
+            "internal": "128 Gb",
+            "memory": "4 Gb"
+        }, 
+        "stock" : 3,
+        "wishlist": false
+    },
+    {
+        "id" : 4,
+        "name" : "Charger Xiaomi 55Watt",
+        "body" : "Cupidatat mollit dolor enim enim elit Lorem eiusmod Lorem. Culpa pariatur quis nisi voluptate et. Laborum qui ad enim officia ut anim dolore ipsum et est est laboris ut. Exercitation reprehenderit minim proident ut in dolor ullamco cupidatat ut. Culpa enim sint reprehenderit nostrud sint magna.",
+        "price" : 20000,
+        "image" : "xiaomi-gan-type-c-55w.jpg",
+        "category": "Charger",
+        "stock" : 20,
+        "wishlist": false
+    }
+]
