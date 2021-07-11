@@ -16,6 +16,7 @@ const CardWishlist = () => {
                     <Image 
                         src="/iphone.jpg"
                         layout="fill"
+                        alt="product-image"
                         objectFit="cover"
                     />
                 </div>

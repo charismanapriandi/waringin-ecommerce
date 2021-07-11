@@ -94,7 +94,7 @@ const Navbar = () => {
                                     </ul>
                                     <Gap height={20} />
                                     <div>
-                                        <Link href="/auth">
+                                        <Link href="/auth" passHref>
                                             <Button active={true}>Login</Button>
                                         </Link>
                                     </div>

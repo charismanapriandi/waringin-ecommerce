@@ -15,7 +15,7 @@ export default function App() {
     dispatch(getAllProduct())
     dispatch(getAllCategory())
     dispatch(getAllCart())
-  }, [])
+  }, [dispatch])
   
   return (
     <Router>

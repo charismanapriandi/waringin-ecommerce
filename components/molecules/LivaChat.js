@@ -14,6 +14,7 @@ const IncomingMessage = ({ message }) => {
                 <Image 
                     src="/profile.jpeg"
                     layout="fill"
+                    alt="avatar"
                     objectFit="cover"
                 />
             </div>
@@ -44,6 +45,7 @@ const OutcomingMessage = ({ message }) => {
                 <Image 
                     src="/profile.jpeg"
                     layout="fill"
+                    alt="avatar"
                     objectFit="cover"
                 />
             </div>

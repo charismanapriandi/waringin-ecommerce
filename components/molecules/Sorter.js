@@ -42,8 +42,8 @@ const Sorter = () => {
             <div 
                 className="flex items-center"
                 onChange={(e)=> onSort(e)}>
-                {sorter.map(sorter => (
-                    <div className="mr-4">
+                {sorter.map((sorter, index) => (
+                    <div className="mr-4" key={index}>
                         <Radio
                             active={selectedOption === sorter.label}
                             label={sorter.label}

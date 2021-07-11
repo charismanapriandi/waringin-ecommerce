@@ -17,7 +17,7 @@ const FormLogin = () => {
     return (
         <div className="w-96 ring ring-background-800 p-4 rounded-xl">
             <div className="flex justify-between items-center">
-                <Link href="/">
+                <Link href="/" passHref>
                     <p className="cursor-pointer text-sm">
                         <FontAwesomeIcon icon={faChevronLeft}/>
                         <span className="ml-2">

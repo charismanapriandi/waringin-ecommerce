@@ -13,6 +13,9 @@ import Pushdown from './Pushdown'
 const CardCart = ({ item }) => {
     const [isDetile, setIsDetile] = useState(false)
     
+    const curencyPrice = useMoney(item.price)
+    const curencyDiscount = useMoney(item.discount)
+    
     return (
         <>
         <div className="flex justify-between items-center">
@@ -20,13 +23,14 @@ const CardCart = ({ item }) => {
                 <div className="w-24 h-24 relative overflow-hidden rounded-xl">
                     <Image 
                         src={`/images/${item.image}`}
+                        alt="product-image"
                         layout="fill"
                         objectFit="cover"
                     />
                 </div>
                 <div className="ml-4">
                     <p className="font-bold">{item.name}</p>
-                    <p className="my-2">{useMoney(item.price)}{item.discount !== 0 && <span className="ml-2 text-text-active">- {useMoney(item.discount)}</span>}</p>
+                    <p className="my-2">{curencyPrice}{item.discount !== 0 && <span className="ml-2 text-text-active">- {curencyDiscount}</span>}</p>
                     <p 
                         className="text-text-900 cursor-pointer text-right flex"
                         onClick={() => setIsDetile(!isDetile)}>

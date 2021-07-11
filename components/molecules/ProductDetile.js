@@ -65,6 +65,7 @@ const ProductDetile = ({ setStatus, children }) => {
                             <Image
                                 src={"/images/"+payload?.image}
                                 layout="fill"
+                                alt="product-image"
                                 objectFit="cover"
                             />
                         </div>
