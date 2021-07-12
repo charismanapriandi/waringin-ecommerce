@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCommentAlt, faHeart } from '@fortawesome/free-regular-svg-icons'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Container } from '.'
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faShoppingBag, faStore, faTimes } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import usePosition from '../../hook/usePosition'
 import { Input, Button } from '..'
@@ -13,9 +13,13 @@ import DropdownRight from './DropdownRight'
 import { openFilter, openLiveChat } from '../../store/actions/statusAction'
 import Link from 'next/link'
 import LiveChat from './LivaChat'
+import useDevice from '../../hook/useDevice'
 
 const Navbar = () => {
     const [userMenu, setUserMenu] = useState(false) 
+    const [isOpen, setIsOpen] = useState(false)
+    const [isSearch, setIsSearch] = useState(false)
+
     const position = usePosition()
     const filterPanel = useSelector(state => state.status.filter_panel)
     const dispatch = useDispatch()
@@ -25,19 +29,122 @@ const Navbar = () => {
         <>
             <nav className="fixed top-0 shadow-md w-full py-3 bg-background-900 z-20 transition-all duration-300">
                 <Container>
-                    <div className="flex items-center justify-between">
-                        <ul className="flex items-center">
+                    {/* -------------------- sm -------------------- */}
+                    <div className="flex items-center lg:hidden justify-between mx-6">
+                        <p className="font-bold text-xl">WaringinAcc</p>
+                        <div className="flex items-center">
+                            {location.pathname === '/' && 
+                                <>
+                                <div onClick={() => setIsSearch(!isSearch)}>
+                                    <FontAwesomeIcon icon={faSearch} />
+                                </div>
+                                <div className={`${isSearch ? 'opacity-100 pointer-events-auto': 'opacity-0 -mt-10 pointer-events-none'} absolute left-0 z-20 w-full px-10 flex transition-all duration-300 bg-background-900`}>
+                                    <div className={`${filterPanel ? '-ml-20 opacity-0' : 'ml-0 opacity-100'} mr-2 transition-all duration-300`}>
+                                        <Button 
+                                            active={true} 
+                                            onClick={() => dispatch(openFilter())}>
+                                            filter</Button>
+                                    </div>
+                                    <div className="w-full relative">
+                                        <Input 
+                                            placeholder="Search" 
+                                            search={true} />
+                                        <div className="absolute top-1/2 transform -translate-y-1/2 right-6 text-text-900"
+                                            onClick={() => {
+                                                setIsSearch(!isSearch)
+                                            }}>
+                                            <FontAwesomeIcon icon={faTimes} />
+                                        </div>
+                                    </div>
+                                </div>
+                                </>
+                            }
+                            <div className="relative ml-4">
+                                <button 
+                                    className={'bg-background-800 rounded-xl p-3 w-14 focus:ring-2 focus:ring-background-active transition-all duration-300'} 
+                                    onClick={() => setIsOpen(!isOpen)}
+                                    >
+                                        {/* times  */}
+                                    <div className={`${isOpen ? 'w-5' : 'w-0 opacity-40'} rotate-45 origin-center transform absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-0.5 bg-text-800 transition-all duration-300`}/>
+                                    <div className={`${isOpen ? 'w-5' : 'w-0 opacity-40'} -rotate-45 origin-center transform absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-0.5 bg-text-800 transition-all duration-300`}/>
+                                        {/* bars  */}
+                                    <div className={`${isOpen ? 'w-0 opacity-40' : 'w-7'} ml-auto transform h-0.5 rounded-sm bg-text-800 mb-1 transition-all duration-300`} />
+                                    <div className={`${isOpen ? 'w-0 opacity-40' : 'w-7'} transform h-0.5 rounded-sm bg-text-800 my-1 transition-all duration-300`} />
+                                    <div className={`${isOpen ? 'w-0 opacity-40' : 'w-7'} ml-auto transform h-0.5 rounded-sm bg-text-800 mt-1 transition-all duration-300`} />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {/* panel  */}
+                    <div className={`${isOpen ? "top-14 right-0 left-0 bottom-0" : "top-full -bottom-full right-0 left-0"} lg:hidden fixed bg-background-900 transition-all duration-300 ease-in-out`}>
+                        <div className="flex justify-center mt-6">
+                            <div
+                                onClick={() => setUserMenu(!userMenu)} 
+                                className="ring-2 ring-background-active w-20 h-20 rounded-full relative overflow-hidden">
+                                <Image 
+                                    src="/profile.jpeg"
+                                    alt="profile"
+                                    layout="fill"
+                                    objectFit='cover'
+                                />
+                            </div>
+                        </div>
+                        <p className="text-center mt-2 mb-4 font-bold">John Doe</p>
+                        <div className="mb-4 mx-10">
+                            <Button>
+                                Profile
+                            </Button>
+                        </div>
+                        <div className="mb-4 mx-10">
+                            <Button>
+                                Dashboard
+                            </Button>
+                        </div>
+                        <div className="flex justify-center">
+                            <div className="relative">
+                                <Button>
+                                    <NavLink to="/cart" activeClassName="font-bold text-text-active">
+                                        <FontAwesomeIcon icon={faShoppingBag} />
+                                        <span className="absolute -bottom-1 -right-2 p-2 rounded-full bg-background-active text-xs"></span>
+                                    </NavLink>
+                                </Button>
+                            </div>
+                            <Gap width={10} />
+                            <div>
+                                <Button>
+                                    <NavLink to="/wishlist" activeClassName="font-bold text-text-active">
+                                        <FontAwesomeIcon icon={faHeart} />
+                                    </NavLink>
+                                </Button>
+                            </div>
+                        </div>
+                        <div className="flex justify-center">
+                            <div className="w-20 mt-4">
+                                <Button>
+                                    <NavLink exact to="/" activeClassName="font-bold text-text-active">
+                                        <FontAwesomeIcon icon={faStore} />
+                                    </NavLink>
+                                </Button>
+                            </div>
+                        </div>
+                            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+                                <Link href="/auth" passHref>
+                                    <Button active={true}>Login</Button>
+                                </Link>
+                            </div>
+                    </div>
+
+                    {/* -------------------- lg -------------------- */}
+                    <div className={`${isOpen ? '' : ''} hidden lg:flex flex-col-reverse lg:flex-row flex-wrap lg:flex-nowrap items-center justify-between`}>
+                        <ul className="hidden lg:flex items-center">
                             <li className="mr-10">
                                 <p className="font-bold text-xl">WaringinAcc</p>
                             </li>
                             <li className="hover:text-background-active transition-all duration-300">
                                 <NavLink exact activeClassName="text-text-active font-bold" to="/">etalase</NavLink>
                             </li>
-                            {/* <li className="mr-4 hover:text-background-active transition-all duration-300">
-                                <NavLink activeClassName="text-text-active font-bold" to="/about">kontak</NavLink>
-                            </li> */}
                         </ul>
-                        <div className={`${position > 50 && location.pathname === '/' ? 'ml-0 opacity-100 pointer-events-auto': '-mt-10 opacity-0 pointer-events-none'} w-full px-10 flex transition-all duration-300`}>
+                        <div className={`${position > 50 && location.pathname === '/' ? 'ml-0 opacity-100 pointer-events-auto': 'lg:-mt-10 lg:opacity-0 pointer-events-none'} w-full px-10 flex transition-all duration-300`}>
                             <div className={`${filterPanel ? '-ml-20 opacity-0' : 'ml-0 opacity-100'} mr-2 transition-all duration-300`}>
                                 <Button 
                                     active={true} 
