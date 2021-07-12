@@ -1,5 +1,5 @@
 const useSum = (value) => {
-    const result = value.reduce((a, b) => {
+    const result = value?.reduce((a, b) => {
         return a + b;
     }, 0)
 

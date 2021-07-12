@@ -1,0 +1,22 @@
+[
+    {
+        "id" : 1,
+        "name" : "Charger oppo",
+        "body" : "Incididunt duis non consectetur nulla aliquip exercitation commodo duis tempor. Irure do consectetur occaecat occaecat labore nostrud ex enim anim ipsum quis esse. Culpa incididunt aliqua do ad sint laboris sint incididunt ullamco est esse fugiat cupidatat. Dolore ex voluptate sint ullamco esse id duis pariatur ea. Et velit magna consectetur proident ad minim commodo pariatur esse do excepteur. Adipisicing veniam consequat pariatur sint voluptate occaecat exercitation ullamco culpa ipsum non Lorem quis.",
+        "price" : 15000,
+        "image" : "charger-oppo.jpeg",
+        "category": "Charger",
+        "stock" : 40,
+        "wishlist": false
+    },
+    {
+        "id" : 4,
+        "name" : "Charger Xiaomi 55Watt",
+        "body" : "Cupidatat mollit dolor enim enim elit Lorem eiusmod Lorem. Culpa pariatur quis nisi voluptate et. Laborum qui ad enim officia ut anim dolore ipsum et est est laboris ut. Exercitation reprehenderit minim proident ut in dolor ullamco cupidatat ut. Culpa enim sint reprehenderit nostrud sint magna.",
+        "price" : 20000,
+        "image" : "xiaomi-gan-type-c-55w.jpg",
+        "category": "Charger",
+        "stock" : 20,
+        "wishlist": false
+    }
+]

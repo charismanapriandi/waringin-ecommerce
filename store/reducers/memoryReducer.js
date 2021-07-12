@@ -1,9 +1,10 @@
-import { CART_MEMORY, CATEGORY_MEMORY, PRODUCT_DETIlE_PAYLOAD, PRODUCT_MEMORY, PRODUCT_SORTED } from "../types"
+import { CART_MEMORY, CATEGORY_MEMORY, PRODUCT_DETIlE_PAYLOAD, PRODUCT_MEMORY, PRODUCT_SORTED, WISHLIST_MEMORY } from "../types"
 
 const initialState = {
     product_list: null,
     category_list: null,
     cart_list: null,
+    wish_list: null,
     product_detile_payload: null,
     product_sorted: null,
     active_user: null,
@@ -28,6 +29,12 @@ export default function memory(state = initialState, action) {
             return {
                 ...state,
                 cart_list: action.payload
+            }
+        }
+        case WISHLIST_MEMORY: {
+            return {
+                ...state,
+                wish_list: action.payload
             }
         }
         case PRODUCT_DETIlE_PAYLOAD : {

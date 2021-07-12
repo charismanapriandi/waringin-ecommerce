@@ -4,7 +4,7 @@ import { Layout, MyScrollbar } from '../components';
 import Cart from '../views/Cart';
 import Wishlist from '../views/Wishlist';
 import { useEffect } from 'react';
-import { getAllCart, getAllCategory, getAllProduct } from '../store/actions/memoryAction';
+import { getAllCart, getAllCategory, getAllProduct, getAllWishlist } from '../store/actions/memoryAction';
 import { useDispatch } from 'react-redux';
 
 export default function App() {
@@ -15,6 +15,7 @@ export default function App() {
     dispatch(getAllProduct())
     dispatch(getAllCategory())
     dispatch(getAllCart())
+    dispatch(getAllWishlist())
   }, [dispatch])
   
   return (
@@ -23,18 +24,9 @@ export default function App() {
         {/* <MyScrollbar /> */}
         <Layout>
           <Switch>
-            {/* <Route path="/about">
-              <h2>About</h2>
-            </Route> */}
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/cart">
-              <Cart />
-            </Route>
-            <Route path="/wishlist">
-              <Wishlist />
-            </Route>
+            <Route exact path="/" component={Home} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/wishlist" component={Wishlist} />
           </Switch>
         </Layout>
       </div>

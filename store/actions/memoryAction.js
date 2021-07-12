@@ -5,6 +5,7 @@ import {
     PRODUCT_MEMORY,
     PRODUCT_SORTED,
     CART_MEMORY,
+    WISHLIST_MEMORY,
 } from "../types"
 
 // data fetcher 
@@ -37,6 +38,18 @@ export const getAllCart = () => async dispatch => {
 
     await dispatch({
         type: CART_MEMORY,
+        payload: data
+    })
+    
+}
+
+export const getAllWishlist = () => async dispatch => {
+
+    const res = await axios.get('/data/wishlistTester.json')
+    const data = res.data
+
+    await dispatch({
+        type: WISHLIST_MEMORY,
         payload: data
     })
     

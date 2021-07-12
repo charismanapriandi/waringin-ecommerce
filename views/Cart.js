@@ -10,7 +10,7 @@ import useSum from "../hook/useSum"
 
 const Cart = () => {
     const cartList = useSelector(state => state.memory.cart_list)
-    
+
     const price = useArray(cartList?.map(item => item.price))
     const discount = useArray(cartList?.map(item => item.discount))
 
@@ -52,7 +52,7 @@ const Cart = () => {
                         <div className="bg-background-800 w-full rounded-xl p-4">
                             <p className="font-bold">Keranjang</p>
                             <Gap height={20} />
-                            {cartList &&
+                            {cartList !== null &&
                                 <>
                                     {cartList?.map(item => {
                                         return (
@@ -82,7 +82,7 @@ const Cart = () => {
                                 </>
                             }
                             
-                            {!cartList && 
+                            {cartList === null && 
                                 <>
                                     <div className="my-5 text-text-900 text-9xl flex justify-center items-center">
                                         <FontAwesomeIcon icon={faShoppingBag} />
