@@ -4,7 +4,7 @@ const usePosition = () => {
     const [position, setPosition] = useState(0)
 
     useEffect(() => {
-        const onScroll = e => {
+        const onScroll = () => {
             setPosition(window.pageYOffset)
         }
     
