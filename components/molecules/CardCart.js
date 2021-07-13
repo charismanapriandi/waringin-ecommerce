@@ -1,9 +1,10 @@
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown, faChevronUp, faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { DropdownRight, Gap } from '..'
+import useDevice from '../../hook/useDevice'
 import useMoney from '../../hook/useMoney'
 import { Button } from '../atoms'
 import ConfirmationDelete from './ConfirmationDelete'
@@ -12,14 +13,17 @@ import Pushdown from './Pushdown'
 
 const CardCart = ({ item }) => {
     const [isDetile, setIsDetile] = useState(false)
+    const [isCMenu, setIsCMenu] = useState(false)
     
     const curencyPrice = useMoney(item.price)
     const curencyDiscount = useMoney(item.discount)
     
+    const deviceSize = useDevice()
+    
     return (
         <>
-        <div className="flex justify-between items-center">
-            <div className="flex">
+        <div className="flex justify-between items-center relative">
+            <div className="flex items-center">
                 <div className="w-24 h-24 relative overflow-hidden rounded-xl">
                     <Image 
                         src={`/images/${item.image}`}
@@ -30,19 +34,38 @@ const CardCart = ({ item }) => {
                 </div>
                 <div className="ml-4">
                     <p className="font-bold">{item.name}</p>
-                    <p className="my-2">{curencyPrice}{item.discount !== 0 && <span className="ml-2 text-text-active">- {curencyDiscount}</span>}</p>
-                    <p 
-                        className="text-text-900 cursor-pointer text-right flex"
-                        onClick={() => setIsDetile(!isDetile)}>
-                        Detile lainnya 
-                        <div className={`${isDetile ? '-rotate-180 ' : ''} ml-2 transform transition-all duration-300`}><FontAwesomeIcon icon={faChevronDown} /></div>
-                    </p>
+                    <span className="my-2">
+                        <p className="">{curencyPrice}</p>
+                        <span className="text-text-900 flex text-sm">discount
+                            {item.discount !== 0 && <p className="text-text-active ml-2"> {curencyDiscount}</p>}
+                            {item.discount === 0 && <p className="text-text-active ml-2"> {curencyDiscount}</p>}
+                        </span>
+                    </span>
                 </div>
             </div>
-            <Gap width={20} />
-            <div className="relative">
-                <ConfirmationDelete />
+            <div className="">
+                {/* -------------------- sm ------------------ */}
+                <div className="absolute top-1 right-1 lg:hidden">
+                    <div onClick={() => setIsCMenu(!isCMenu)}>
+                        <FontAwesomeIcon icon={faEllipsisV} />
+                    </div>
+                    <DropdownRight status={isCMenu} setStatus={setIsCMenu}>
+                        <Button onClick={() => {
+                            setIsCMenu(false)
+                            setIsDetile(true)
+                        }}>Detile Product</Button>
+                        <Gap height={10} />
+                        <ConfirmationDelete />
+                    </DropdownRight>
+                </div>
+                {/* -------------------- lg ------------------ */}
+                <div className="relative hidden lg:block">
+                    <Button onClick={() => setIsDetile(!isDetile)}>Detile</Button>
+                    <Gap height={10} />
+                    <ConfirmationDelete />
+                </div>
             </div>
+            
         </div>
         <Pushdown status={isDetile} setStatus={setIsDetile}>
             <div className="flex justify-center">

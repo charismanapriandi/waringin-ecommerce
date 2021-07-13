@@ -4,7 +4,6 @@ import Container from './Container'
 import CardProduct from './CardProduct'
 import Filter from './Filter'
 import Sorter from './Sorter'
-import MyScrollbar from './Scrollbar'
 import Footer from './Footer'
 import DropdownLeft from './DropdownLeft'
 import DropdownRight from './DropdownRight'
@@ -17,6 +16,7 @@ import CardWishlist from './CardWishlist'
 import ConfirmationDelete from './ConfirmationDelete'
 import LiveChat from './LivaChat'
 import Pushdown from './Pushdown'
+import ScrollBar from './ScrollBar'
 
 export { 
     Navbar,
@@ -25,7 +25,6 @@ export {
     CardProduct,
     Filter,
     Sorter,
-    MyScrollbar,
     Footer,
     DropdownLeft,
     DropdownRight,
@@ -37,5 +36,6 @@ export {
     CardWishlist,
     ConfirmationDelete,
     LiveChat,
-    Pushdown
+    Pushdown,
+    ScrollBar
 }

@@ -67,7 +67,7 @@ const ProductDetile = ({ setStatus, children }) => {
                 {/* CONTENT */}
                 
                 {/* <Gap height={20} /> */}
-                <div className="block lg:flex overflow-y-auto p-4">
+                <div className="block lg:flex h-full overflow-y-auto p-4">
                     {/* LEFT */}
                     <div className="lg:w-1/3">
                         <div className="w-64 h-64 relative rounded-xl overflow-hidden mx-auto">

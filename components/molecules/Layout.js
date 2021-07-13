@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { useLocation } from "react-router-dom"
 import { Navbar, Filter } from "."
-import { Footer, Gap } from ".."
+import { Footer, Gap, ScrollBar } from ".."
 import { closeFilter } from "../../store/actions/statusAction"
 import { Button } from "../atoms"
 

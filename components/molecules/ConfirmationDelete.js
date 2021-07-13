@@ -3,18 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react"
 import { Button, Gap } from "../atoms"
 
-const ConfirmationDelete = () => {
+const ConfirmationDelete = ({ icon }) => {
     const [confirm, setConfirm] = useState(false)
 
     return (
         <>
-            <div className={`${confirm ? 'hidden' : 'ml-10'}`}>
+            <div className={`${confirm ? 'hidden' : ''}`}>
                 <Button danger={true} onClick={() => {
                     setConfirm(true)
                     setTimeout(() => {
                         setConfirm(false)
                     }, 5000)}}>
-                    <FontAwesomeIcon icon={faTrashAlt} />
+                    {icon && <FontAwesomeIcon icon={faTrashAlt} />}
+                    {!icon && <p>Delete</p>}
                 </Button>
             </div>
             <div className={`${confirm ? 'flex' : 'hidden'}`}>

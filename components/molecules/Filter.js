@@ -6,6 +6,7 @@ import { Input, Gap, Button } from '..'
 const Filter = ({ children }) => {
     const categoryList = useSelector(state => state.memory.category_list)
     const [checked, setChecked] = useState([])
+    
 
     const handleCheckbox = (value) => {
         const currentIndex = checked.indexOf(value)

@@ -15,6 +15,7 @@ import Link from 'next/link'
 import LiveChat from './LivaChat'
 import useDevice from '../../hook/useDevice'
 import useScrollBody from '../../hook/useScrollBody'
+import useGoToTop from '../../hook/useGoToTop'
 
 const Navbar = () => {
     const [userMenu, setUserMenu] = useState(false) 
@@ -28,6 +29,7 @@ const Navbar = () => {
 
     const scrollBody = useScrollBody()
     const deviceSize = useDevice()
+    const goToTop = useGoToTop()
 
     return (
         <>
@@ -133,7 +135,8 @@ const Navbar = () => {
                             <NavLink to="/cart" activeClassName="font-bold text-text-active">
                                 <Button onClick={() => {
                                     setIsOpen(false)
-                                    scrollBody()}}>
+                                    scrollBody()
+                                    goToTop()}}>
                                     <FontAwesomeIcon icon={faShoppingBag} />
                                     <span className="ml-2">Cart</span>
                                 </Button>
@@ -143,7 +146,8 @@ const Navbar = () => {
                             <NavLink to="/wishlist" activeClassName="font-bold text-text-active">
                                 <Button onClick={() => {
                                     setIsOpen(false)
-                                    scrollBody()}}>
+                                    scrollBody()
+                                    goToTop()}}>
                                     <FontAwesomeIcon icon={faHeart} />
                                     <span className="ml-2">Wishlist</span>
                                 </Button>
@@ -153,7 +157,8 @@ const Navbar = () => {
                             <NavLink exact to="/" activeClassName="font-bold text-text-active">
                                 <Button onClick={() => {
                                     setIsOpen(false)
-                                    scrollBody()}}>
+                                    scrollBody()
+                                    goToTop()}}>
                                     <FontAwesomeIcon icon={faStore} />
                                     <span className="ml-2">Store</span>
                                 </Button>
@@ -172,7 +177,7 @@ const Navbar = () => {
                             <li className="mr-10">
                                 <p className="font-bold text-xl">WaringinAcc</p>
                             </li>
-                            <li className="hover:text-background-active transition-all duration-300">
+                            <li className="hover:text-background-active transition-all duration-300" onClick={() => goToTop()}>
                                 <NavLink exact activeClassName="text-text-active font-bold" to="/">Store</NavLink>
                             </li>
                         </ul>
@@ -198,13 +203,17 @@ const Navbar = () => {
                                 </div>
                                 <LiveChat />
                             </li> */}
-                            <li className="relative mr-6 text-xl hover:text-background-active cursor-pointer transition-all duration-300">
+                            <li 
+                                onClick={() => goToTop()}
+                                className="relative mr-6 text-xl hover:text-background-active cursor-pointer transition-all duration-300">
                                 <NavLink to="/cart" activeClassName="font-bold text-text-active">
                                     <FontAwesomeIcon icon={faShoppingBag} />
                                     <span className="absolute -bottom-1 -right-2 p-2 rounded-full bg-background-active text-xs"></span>
                                 </NavLink>
                             </li>
-                            <li className="mr-6 text-xl hover:text-background-active cursor-pointer transition-all duration-300">
+                            <li 
+                                onClick={() => goToTop()}
+                                className="mr-6 text-xl hover:text-background-active cursor-pointer transition-all duration-300">
                                 <NavLink to="/wishlist" activeClassName="font-bold text-text-active">
                                     <FontAwesomeIcon icon={faHeart} />
                                 </NavLink>
