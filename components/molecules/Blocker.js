@@ -1,3 +1,5 @@
+import useScrollBody from "../../hook/useScrollBody"
+
 const Blocker = ({ status, ...rest }) => {
     return (
         <div

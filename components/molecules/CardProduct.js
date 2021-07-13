@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import useMoney from '../../hook/useMoney'
+import useScrollBody from '../../hook/useScrollBody'
 import { setProductDetile } from '../../store/actions/memoryAction'
 import { openProductDetile } from '../../store/actions/statusAction'
 import { Button, Gap } from '../atoms'
@@ -12,7 +13,7 @@ import { Button, Gap } from '../atoms'
 const CardProduct = ({ image, name, price, payload }) => {
     const [favorite, setFavorite] = useState(false)
     const dispatch = useDispatch()
-    
+    const scrollBody = useScrollBody()
     return (
         <div className="w-64 border border-background-800 rounded-3xl overflow-hidden mb-2 mx-1 relative">
             <div className="w-60 h-60 overflow-hidden mx-auto mt-2 rounded-2xl relative">
@@ -41,6 +42,7 @@ const CardProduct = ({ image, name, price, payload }) => {
                 <Button onClick={() => {
                     dispatch(openProductDetile())
                     dispatch(setProductDetile(payload))
+                    scrollBody()
                 }}>
                     lihat detail produk
                 </Button>

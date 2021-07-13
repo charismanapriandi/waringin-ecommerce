@@ -22,8 +22,8 @@ const Cart = () => {
     return (
         <>
             <Container>
-                <div className="flex">
-                    <div className="w-2/3 mr-4">
+                <div className="lg:flex">
+                    <div className="lg:w-2/3 lg:mr-4">
                         <div className="ring ring-background-800 rounded-xl p-4 flex justify-between">
                             <div>
                                 <p>DATA PENERIMA</p>
@@ -48,7 +48,7 @@ const Cart = () => {
                             METODE PENGIRIMAN
                         </div>
                     </div>
-                    <div className="w-1/2">
+                    <div className="lg:w-1/2 mt-4 lg:mt-0">
                         <div className="bg-background-800 w-full rounded-xl p-4">
                             <p className="font-bold">Keranjang</p>
                             <Gap height={20} />

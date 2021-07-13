@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCommentAlt, faHeart } from '@fortawesome/free-regular-svg-icons'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Container } from '.'
-import { faSearch, faShoppingBag, faStore, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft, faSearch, faShoppingBag, faStore, faTimes } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import usePosition from '../../hook/usePosition'
 import { Input, Button } from '..'
@@ -14,6 +14,7 @@ import { openFilter, openLiveChat } from '../../store/actions/statusAction'
 import Link from 'next/link'
 import LiveChat from './LivaChat'
 import useDevice from '../../hook/useDevice'
+import useScrollBody from '../../hook/useScrollBody'
 
 const Navbar = () => {
     const [userMenu, setUserMenu] = useState(false) 
@@ -25,13 +26,39 @@ const Navbar = () => {
     const dispatch = useDispatch()
     const location = useLocation()
 
+    const scrollBody = useScrollBody()
+    const deviceSize = useDevice()
+
     return (
         <>
             <nav className="fixed top-0 shadow-md w-full py-3 bg-background-900 z-20 transition-all duration-300">
                 <Container>
                     {/* -------------------- sm -------------------- */}
                     <div className="flex items-center lg:hidden justify-between mx-6">
-                        <p className="font-bold text-xl">WaringinAcc</p>
+                        <div className="flex items-center">
+                            {location.pathname === '/cart' && deviceSize < 1024 &&
+                                <div className="mr-4">
+                                    <NavLink to="/">
+                                        <Button>
+                                            <FontAwesomeIcon icon={faChevronLeft} />
+                                            {/* <span className="ml-2">home</span> */}
+                                        </Button>
+                                    </NavLink>
+                                </div>
+                            }
+                            {location.pathname === '/wishlist' && deviceSize < 1024 &&
+                                <div className="mr-4">
+                                    <NavLink to="/">
+                                        <Button>
+                                            <FontAwesomeIcon icon={faChevronLeft} />
+                                        </Button>
+                                    </NavLink>
+                                </div>
+                            }
+                            {location.pathname === '/' && <p className="font-bold text-xl">Waringin Acc</p>}
+                        </div>
+                        {location.pathname === '/cart' && <p className="font-bold text-xl">Cart</p>}
+                        {location.pathname === '/wishlist' && <p className="font-bold text-xl">Wishlist</p>}
                         <div className="flex items-center">
                             {location.pathname === '/' && 
                                 <>
@@ -62,8 +89,10 @@ const Navbar = () => {
                             <div className="relative ml-4">
                                 <button 
                                     className={'bg-background-800 rounded-xl p-3 w-14 focus:ring-2 focus:ring-background-active transition-all duration-300'} 
-                                    onClick={() => setIsOpen(!isOpen)}
-                                    >
+                                    onClick={() => {
+                                        setIsOpen(!isOpen)
+                                        scrollBody()
+                                    }}>
                                         {/* times  */}
                                     <div className={`${isOpen ? 'w-5' : 'w-0 opacity-40'} rotate-45 origin-center transform absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-0.5 bg-text-800 transition-all duration-300`}/>
                                     <div className={`${isOpen ? 'w-5' : 'w-0 opacity-40'} -rotate-45 origin-center transform absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-0.5 bg-text-800 transition-all duration-300`}/>
@@ -76,7 +105,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     {/* panel  */}
-                    <div className={`${isOpen ? "top-14 right-0 left-0 bottom-0" : "top-full -bottom-full right-0 left-0"} lg:hidden fixed bg-background-900 transition-all duration-300 ease-in-out`}>
+                    <div className={`${isOpen ? "top-14 right-0 left-0 bottom-0 opacity-100 pointer-events-auto" : "top-full -bottom-full right-0 left-0 opacity-0 pointer-events-none"} lg:hidden fixed bg-background-900 transition-all duration-300 ease-in-out`}>
                         <div className="flex justify-center mt-6">
                             <div
                                 onClick={() => setUserMenu(!userMenu)} 
@@ -100,38 +129,41 @@ const Navbar = () => {
                                 Dashboard
                             </Button>
                         </div>
-                        <div className="flex justify-center">
-                            <div className="relative">
-                                <Button>
-                                    <NavLink to="/cart" activeClassName="font-bold text-text-active">
-                                        <FontAwesomeIcon icon={faShoppingBag} />
-                                        <span className="absolute -bottom-1 -right-2 p-2 rounded-full bg-background-active text-xs"></span>
-                                    </NavLink>
+                        <div className="mb-4 mx-10">
+                            <NavLink to="/cart" activeClassName="font-bold text-text-active">
+                                <Button onClick={() => {
+                                    setIsOpen(false)
+                                    scrollBody()}}>
+                                    <FontAwesomeIcon icon={faShoppingBag} />
+                                    <span className="ml-2">Cart</span>
                                 </Button>
-                            </div>
-                            <Gap width={10} />
-                            <div>
-                                <Button>
-                                    <NavLink to="/wishlist" activeClassName="font-bold text-text-active">
-                                        <FontAwesomeIcon icon={faHeart} />
-                                    </NavLink>
-                                </Button>
-                            </div>
+                            </NavLink>
                         </div>
-                        <div className="flex justify-center">
-                            <div className="w-20 mt-4">
-                                <Button>
-                                    <NavLink exact to="/" activeClassName="font-bold text-text-active">
-                                        <FontAwesomeIcon icon={faStore} />
-                                    </NavLink>
+                        <div className="mb-4 mx-10">
+                            <NavLink to="/wishlist" activeClassName="font-bold text-text-active">
+                                <Button onClick={() => {
+                                    setIsOpen(false)
+                                    scrollBody()}}>
+                                    <FontAwesomeIcon icon={faHeart} />
+                                    <span className="ml-2">Wishlist</span>
                                 </Button>
-                            </div>
+                            </NavLink>
                         </div>
-                            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
-                                <Link href="/auth" passHref>
-                                    <Button active={true}>Login</Button>
-                                </Link>
-                            </div>
+                        <div className="mb-4 mx-10">
+                            <NavLink exact to="/" activeClassName="font-bold text-text-active">
+                                <Button onClick={() => {
+                                    setIsOpen(false)
+                                    scrollBody()}}>
+                                    <FontAwesomeIcon icon={faStore} />
+                                    <span className="ml-2">Store</span>
+                                </Button>
+                            </NavLink>
+                        </div>
+                        <div className="mb-4 mx-10">
+                            <Link href="/auth" passHref>
+                                <Button active={true}>Login</Button>
+                            </Link>
+                        </div>
                     </div>
 
                     {/* -------------------- lg -------------------- */}
@@ -141,7 +173,7 @@ const Navbar = () => {
                                 <p className="font-bold text-xl">WaringinAcc</p>
                             </li>
                             <li className="hover:text-background-active transition-all duration-300">
-                                <NavLink exact activeClassName="text-text-active font-bold" to="/">etalase</NavLink>
+                                <NavLink exact activeClassName="text-text-active font-bold" to="/">Store</NavLink>
                             </li>
                         </ul>
                         <div className={`${position > 50 && location.pathname === '/' ? 'ml-0 opacity-100 pointer-events-auto': 'lg:-mt-10 lg:opacity-0 pointer-events-none'} w-full px-10 flex transition-all duration-300`}>
@@ -158,14 +190,14 @@ const Navbar = () => {
                             </div>
                         </div>
                         <ul className="flex items-center">
-                            <li className="relative">
+                            {/* <li className="relative">
                                 <div 
                                     onClick={() => dispatch(openLiveChat())}
                                     className="relative mr-6 text-xl hover:text-background-active cursor-pointer transition-all duration-300">
                                     <FontAwesomeIcon icon={faCommentAlt} />
                                 </div>
                                 <LiveChat />
-                            </li>
+                            </li> */}
                             <li className="relative mr-6 text-xl hover:text-background-active cursor-pointer transition-all duration-300">
                                 <NavLink to="/cart" activeClassName="font-bold text-text-active">
                                     <FontAwesomeIcon icon={faShoppingBag} />
