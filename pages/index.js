@@ -8,6 +8,7 @@ import { getAllCart, getAllCategory, getAllProduct, getAllWishlist } from '../st
 import { useDispatch } from 'react-redux';
 import useDevice from '../hook/useDevice';
 import { closeFilter, openFilter } from '../store/actions/statusAction';
+import Profile from '../views/Profile';
 
 export default function App() {
   const dispatch = useDispatch()
@@ -36,6 +37,7 @@ export default function App() {
               <Route exact path="/" component={Home} />
               <Route path="/cart" component={Cart} />
               <Route path="/wishlist" component={Wishlist} />
+              <Route path="/profile" component={Profile} />
             </Switch>
           </Layout>
       </div>

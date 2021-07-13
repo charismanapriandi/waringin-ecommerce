@@ -6,6 +6,7 @@ import { useSelector } from "react-redux"
 import { useLocation } from "react-router-dom"
 import { Navbar, Filter } from "."
 import { Footer, Gap, ScrollBar } from ".."
+import useDevice from "../../hook/useDevice"
 import { closeFilter } from "../../store/actions/statusAction"
 import { Button } from "../atoms"
 
@@ -19,6 +20,7 @@ const Layout = ({ children }) => {
             dispatch(closeFilter())
         }
     })
+    const deviceSize = useDevice()
 
     return (
         <>
@@ -29,13 +31,15 @@ const Layout = ({ children }) => {
                     <Gap height={60} />
                     <Filter>
                         {/* Control button */}
-                        <div>
-                            <Button 
-                                onClick={() => {
-                                    dispatch(closeFilter())}}>
-                                <FontAwesomeIcon icon={faTimes} />
-                            </Button>
-                        </div>
+                        {deviceSize > 1024 && 
+                            <div >
+                                <Button 
+                                    onClick={() => {
+                                        dispatch(closeFilter())}}>
+                                    <FontAwesomeIcon icon={faTimes} />
+                                </Button>
+                            </div>
+                        }
                     </Filter>
                 </div>
                 <div className={`${filterPanel ? 'lg:ml-64' : 'ml-0'}  w-full min-h-screen transition-all duration-300`}>

@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCommentAlt, faHeart } from '@fortawesome/free-regular-svg-icons'
-import { NavLink, useLocation } from 'react-router-dom'
+import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import { NavLink, useHistory, useLocation } from 'react-router-dom'
 import { Container } from '.'
-import { faChevronLeft, faSearch, faShoppingBag, faStore, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingBag, faStore } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import usePosition from '../../hook/usePosition'
 import { Input, Button } from '..'
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { Gap } from '../atoms'
 import DropdownRight from './DropdownRight'
-import { openFilter, openLiveChat } from '../../store/actions/statusAction'
+import { closeFilter, openFilter, openLiveChat } from '../../store/actions/statusAction'
 import Link from 'next/link'
 import LiveChat from './LivaChat'
 import useDevice from '../../hook/useDevice'
@@ -26,6 +26,7 @@ const Navbar = () => {
     const filterPanel = useSelector(state => state.status.filter_panel)
     const dispatch = useDispatch()
     const location = useLocation()
+    const history = useHistory()
 
     const scrollBody = useScrollBody()
     const deviceSize = useDevice()
@@ -44,6 +45,7 @@ const Navbar = () => {
 
     return (
         <>
+            {/* top  */}
             <nav className="fixed top-0 shadow-md w-full py-3 bg-background-900 z-20 transition-all duration-300">
                 <Container>
                     {/* -------------------- sm -------------------- */}
@@ -55,36 +57,27 @@ const Navbar = () => {
                         {location.pathname === '/wishlist' && <p className="font-bold text-xl">Wishlist</p>}
                         <div className="flex items-center">
                             {location.pathname === '/' && 
-                                <>
-                                    {/* search trigger */}
-                                    <div onClick={() => setIsSearch(true)}>
-                                        <FontAwesomeIcon icon={faSearch} />
-                                    </div>
-                                </>
+                                <div className="relative ml-4">
+                                    <button 
+                                        className={'bg-background-800 rounded-xl p-3 w-14 focus:ring-2 focus:ring-background-active transition-all duration-300'} 
+                                        onClick={() => {
+                                            filterPanel 
+                                            ? dispatch(closeFilter()) && scrollBody() 
+                                            : dispatch(openFilter()) && scrollBody()
+                                        }}>
+                                            {/* times  */}
+                                        <div className={`${filterPanel ? 'w-5' : 'w-0 opacity-40'} rotate-45 origin-center transform absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-0.5 bg-text-800 transition-all duration-300`}/>
+                                        <div className={`${filterPanel ? 'w-5' : 'w-0 opacity-40'} -rotate-45 origin-center transform absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-0.5 bg-text-800 transition-all duration-300`}/>
+                                            {/* bars  */}
+                                        <div className={`${filterPanel ? 'w-0 opacity-40' : 'w-7'} ml-auto transform h-0.5 rounded-sm bg-text-800 mb-1 transition-all duration-300`} />
+                                        <div className={`${filterPanel ? 'w-0 opacity-40' : 'w-7'} transform h-0.5 rounded-sm bg-text-800 my-1 transition-all duration-300`} />
+                                        <div className={`${filterPanel ? 'w-0 opacity-40' : 'w-7'} ml-auto transform h-0.5 rounded-sm bg-text-800 mt-1 transition-all duration-300`} />
+                                    </button>
+                                </div>
                             }
                         </div>
                     </div>
-                    <div className={`${isSearch ? 'opacity-100 pointer-events-auto h-10': 'opacity-0 h-0 pointer-events-none'} relative mt-2 w-full px-10 flex transition-all duration-300 bg-background-900`}>
-                        <div className={`${filterPanel ? '-ml-20 opacity-0' : 'ml-0 opacity-100'} mr-2 transition-all duration-300`}>
-                            <Button 
-                                active={true} 
-                                onClick={() => dispatch(openFilter())}>
-                                filter</Button>
-                        </div>
-                        <div className="w-full relative">
-                            <Input 
-                                placeholder="Search" 
-                                search={true} />
-                            <div className="absolute top-1/2 transform -translate-y-1/2 right-6 text-text-900"
-                                onClick={() => {
-                                    setIsSearch(!isSearch)
-                                }}>
-                                <FontAwesomeIcon icon={faTimes} />
-                            </div>
-                        </div>
-                    </div>
                     
-
                     {/* -------------------- lg -------------------- */}
                     <div className={`hidden lg:flex flex-col-reverse lg:flex-row flex-wrap lg:flex-nowrap items-center justify-between`}>
                         <ul className="hidden lg:flex items-center">
@@ -148,7 +141,13 @@ const Navbar = () => {
                                     <Gap height={20} />
                                     <ul>
                                         <li>
-                                            <Button>Profile</Button>
+                                            <Button 
+                                                onClick={() => {
+                                                    history.push('/profile')
+                                                    setUserMenu(false)
+                                                }}>
+                                                Profile
+                                            </Button>
                                         </li>
                                         <li>
                                             <Button>Dashboard</Button>

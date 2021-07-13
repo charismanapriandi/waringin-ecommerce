@@ -13,22 +13,22 @@ const Sorter = () => {
         {
             label: 'latest',
             name: 'sorter',
-            display: 'terbaru'
+            display: 'latest'
         },
         {
             label: 'popular',
             name: 'sorter',
-            display: 'populer'
+            display: 'popular'
         },
         {
             label: 'cheapest',
             name: 'sorter',
-            display: 'termurah'
+            display: 'cheapest'
         },
         {
             label: 'most-expensive',
             name: 'sorter',
-            display: 'termahal'
+            display: 'most_expensive'
         }
     ]
 
@@ -37,8 +37,8 @@ const Sorter = () => {
     }
     
     return (
-        <div className="flex items-center">
-            <p className="mr-4">Urutkan</p>
+        <div className="flex items-center overflow-x-auto">
+            <p className="mr-4">Sort</p>
             <div 
                 className="flex items-center"
                 onChange={(e)=> onSort(e)}>
