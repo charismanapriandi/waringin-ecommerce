@@ -108,12 +108,14 @@ const ProductDetile = ({ setStatus, children }) => {
                         <p className="font-bold text-lg text-center">{payload?.name}</p>
                         <p className="mt-2">{payload?.body}</p>
                         <Gap height={20} />
-                        <div className="flex items-center mb-2">
+                        <div className="block lg:flex items-center mb-2">
                             <p className="font-bold mr-4">Warna</p>
-                            <div className="relative">
+                            <div className="relative mt-2">
                                 <div className="w-64">
                                     <Input type="button" defaultValue="--- pilih warna ---" onClick={() => setIsColor(!isColor)}/>
                                 </div>
+                                {/* TODO: Small Device */}
+                                {/* -------------- lg --------------- */}
                                 <DropdownCenter status={isColor} setStatus={setIsColor}>
                                     { color.map(color => (
                                         <Radio key={color.id}>{color.name}</Radio>
@@ -121,7 +123,7 @@ const ProductDetile = ({ setStatus, children }) => {
                                 </DropdownCenter>
                             </div>
                         </div>
-                        <div className="items-center mb-2 flex">
+                        <div className="items-center mb-2 block lg:flex">
                             <p className="font-bold mr-4">Memori Penyimpanan</p>
                             <div className="relative">
                                 <div className="w-64">
@@ -130,6 +132,8 @@ const ProductDetile = ({ setStatus, children }) => {
                                         defaultValue="--- pilih option ---" 
                                         onClick={() => setIsStorage(!isStorage)}/>
                                 </div>
+                                {/* TODO: Small Device */}
+                                {/* -------------- lg --------------- */}
                                 <DropdownCenter status={isStorage} setStatus={setIsStorage}>
                                     { color.map(color => (
                                         <Radio key={color.id}>{color.name}</Radio>
@@ -137,7 +141,7 @@ const ProductDetile = ({ setStatus, children }) => {
                                 </DropdownCenter>
                             </div>
                         </div>
-                        <div className="items-center mb-2 flex">
+                        <div className="items-center mb-2 block lg:flex">
                             <p className="font-bold mr-4">Memori RAM</p>
                             <div className="relative">
                                 <div className="w-64">
@@ -146,6 +150,8 @@ const ProductDetile = ({ setStatus, children }) => {
                                         defaultValue="--- pilih option ---" 
                                         onClick={() => setIsRam(!isRam)}/>
                                 </div>
+                                {/* TODO: Small Device */}
+                                {/* -------------- lg --------------- */}
                                 <DropdownCenter status={isRam} setStatus={setIsRam}>
                                     { color.map(color => (
                                         <Radio key={color.id}>{color.name}</Radio>
@@ -166,7 +172,7 @@ const ProductDetile = ({ setStatus, children }) => {
                     </div>
                     <div>
                         <Button active={true}>
-                            <span className="font-bold mr-4">{useMoney(payload?.price)} </span>tambahkan ke keranjang
+                            <span className="font-bold mr-4">{useMoney(payload?.price)} </span>add to cart
                         </Button>
                     </div>
                 </div>

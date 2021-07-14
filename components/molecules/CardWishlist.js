@@ -1,19 +1,25 @@
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import useMoney from '../../hook/useMoney'
+import useScrollBody from '../../hook/useScrollBody'
 import { setProductDetile } from '../../store/actions/memoryAction'
 import { openProductDetile } from '../../store/actions/statusAction'
 import { Button, Gap } from '../atoms'
 import ConfirmationDelete from './ConfirmationDelete'
+import DropdownRight from './DropdownRight'
 
 const CardWishlist = ({ item }) => {
     const dispatch = useDispatch()
     const curencyPrice = useMoney(item.price)
-
+    const [isCMenu, setIsCMenu] = useState(false)
+    const scrollBody = useScrollBody()
+    
     return (
-        <div className="ring ring-background-800 rounded-xl p-4 flex justify-between mb-4">
+        <div className="ring ring-background-800 rounded-xl p-4 flex justify-between mb-4 relative">
             <div className="flex">
                 <div className="w-24 h-24 relative overflow-hidden rounded-xl">
                     <Image 
@@ -36,14 +42,33 @@ const CardWishlist = ({ item }) => {
                     <p>{curencyPrice}</p>
                 </div>
             </div>
-            <div className="relative mt-auto flex">
+            {/* -------------------- sm ------------------ */}
+            <div className="absolute top-2 right-3 lg:hidden">
+                <div onClick={() => setIsCMenu(!isCMenu)}>
+                    <FontAwesomeIcon icon={faEllipsisV} />
+                </div>
+                <DropdownRight status={isCMenu} setStatus={setIsCMenu}>
+                    <Button onClick={() => {
+                        setIsCMenu(false)
+                        dispatch(setProductDetile(item))
+                        dispatch(openProductDetile())
+                        scrollBody()
+                    }}>add to cart</Button>
+                    <Gap height={10} />
+                    <ConfirmationDelete />
+                </DropdownRight>
+            </div>
+            {/* -------------------- lg ------------------ */}
+            <div className="relative mt-auto hidden lg:flex">
                 <ConfirmationDelete/>   
                 <Gap width={20} />    
                 <Button 
                     active={true} 
                     onClick={() => {
                         dispatch(setProductDetile(item))
-                        dispatch(openProductDetile())}}>
+                        dispatch(openProductDetile())
+                        scrollBody()
+                    }}>
                     tambah ke keranjang
                 </Button>
             </div>

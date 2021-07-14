@@ -53,8 +53,10 @@ const Navbar = () => {
                         <div className="flex items-center">
                             {location.pathname === '/' && <p className="font-bold text-xl">Waringin Acc</p>}
                         </div>
+                        {/* title control  */}
                         {location.pathname === '/cart' && <p className="font-bold text-xl">Cart</p>}
                         {location.pathname === '/wishlist' && <p className="font-bold text-xl">Wishlist</p>}
+                        {location.pathname === '/profile' && <p className="font-bold text-xl">Profile</p>}
                         <div className="flex items-center">
                             {location.pathname === '/' && 
                                 <div className="relative ml-4">
