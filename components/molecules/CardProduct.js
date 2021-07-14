@@ -11,12 +11,13 @@ import { openProductDetile } from '../../store/actions/statusAction'
 import { Button, ButtonWishlist, Gap } from '../atoms'
 
 const CardProduct = ({ image, name, price, payload }) => {
-    const [favorite, setFavorite] = useState(false)
+    // const [favorite, setFavorite] = useState(false)
     const dispatch = useDispatch()
     const {scrollOff} = useScrollBody()
+
     return (
-        <div className="w-64 border border-background-800 rounded-3xl overflow-hidden mb-2 mx-1 relative">
-            <div className="w-60 h-60 overflow-hidden mx-auto mt-2 rounded-2xl relative">
+        <div className="cpsm-width sm:w-64 border border-background-800 rounded-3xl overflow-hidden mb-2 sm:mx-1 relative">
+            <div className="w-full sm:w-60 h-40 sm:h-60 overflow-hidden mx-auto sm:mt-2 rounded-2xl relative">
                 <Image 
                     src={'/images/' + image}
                     alt="product"
@@ -28,10 +29,10 @@ const CardProduct = ({ image, name, price, payload }) => {
             </div>
             </div>
             <div className="px-2 pt-3 pb-2">
-                <p className="text-base font-bold">{name}</p>
+                <p className="text-xs sm:text-base font-bold">{name}</p>
                 <div className="mt-2">
-                    <p className="text-sm text-text-900">harga</p>
-                    <p className="">Rp. {useMoney(price)}</p>
+                    <p className="text-xs sm:text-sm text-text-900">price</p>
+                    <p className="text-xs sm:text-sm">{useMoney(price)}</p>
                 </div>
                 <Gap height={10} />
                 <Button onClick={() => {
@@ -39,7 +40,7 @@ const CardProduct = ({ image, name, price, payload }) => {
                     dispatch(setProductDetile(payload))
                     scrollOff()
                 }}>
-                    lihat detail produk
+                    <p className="text-xs sm:text-sm">product detile</p>
                 </Button>
             </div>
         </div>

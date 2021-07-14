@@ -32,7 +32,7 @@ const Home = () => {
                 <Gap height={30} />
                 <Sorter />
                 <Gap height={30} />
-                <div className="flex flex-wrap justify-center">
+                <div className="sm:flex grid grid-cols-2 sm:flex-wrap sm:justify-center justify-between">
                     {productList?.map(item => {
                         return <CardProduct 
                             key={item.id}
