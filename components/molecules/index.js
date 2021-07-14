@@ -17,6 +17,7 @@ import ConfirmationDelete from './ConfirmationDelete'
 import LiveChat from './LivaChat'
 import Pushdown from './Pushdown'
 import ScrollBar from './ScrollBar'
+import ModalCenter from './ModalCenter'
 
 export { 
     Navbar,
@@ -37,5 +38,6 @@ export {
     ConfirmationDelete,
     LiveChat,
     Pushdown,
-    ScrollBar
+    ScrollBar,
+    ModalCenter
 }

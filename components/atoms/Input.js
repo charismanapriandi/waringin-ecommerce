@@ -8,7 +8,9 @@ const Input = ({ label, placeholder, search, center, type='text', password, ...r
 
     return (
         <div className="relative">
-            { label ? <label>{ label }</label> : null}
+            { label 
+                ? <div className="mb-1"><label className="text-sm" htmlFor={`type-${label}`}>{ label }</label></div> 
+                : null}
             { search 
             ? <div className="absolute top-1/2 transform -translate-y-1/2 pl-5 text-text-900">
                 <FontAwesomeIcon icon={faSearch} />
@@ -16,6 +18,7 @@ const Input = ({ label, placeholder, search, center, type='text', password, ...r
             : null }
             <input 
                 { ...rest } 
+                id={`type-${label}`}
                 type={password && isVisible && 'password' || type}
                 placeholder={ placeholder }
                 className={`${search ? 'pl-14 pr-5' : 'px-4'} ${center ? 'text-center' : '' } ${type === 'button' && 'cursor-pointer hover:ring ring-background-active'} bg-background-800 rounded-xl py-2 w-full outline-none focus:outline-none focus:ring-2 focus:ring-background-active transition-all duration-300`} />

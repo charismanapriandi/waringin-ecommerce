@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import { faCommentAlt, faHeart } from '@fortawesome/free-regular-svg-icons'
 import { NavLink, useHistory, useLocation } from 'react-router-dom'
 import { Container } from '.'
-import { faShoppingBag, faStore } from '@fortawesome/free-solid-svg-icons'
+import { faHeadset, faShoppingBag, faStore } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import usePosition from '../../hook/usePosition'
 import { Input, Button } from '..'
@@ -28,7 +28,7 @@ const Navbar = () => {
     const location = useLocation()
     const history = useHistory()
 
-    const scrollBody = useScrollBody()
+    const {scrollOn, scrollOff} = useScrollBody()
     const deviceSize = useDevice()
     const goToTop = useGoToTop()
     
@@ -64,8 +64,8 @@ const Navbar = () => {
                                         className={'bg-background-800 rounded-xl p-3 w-14 focus:ring-2 focus:ring-background-active transition-all duration-300'} 
                                         onClick={() => {
                                             filterPanel 
-                                            ? dispatch(closeFilter()) && scrollBody() 
-                                            : dispatch(openFilter()) && scrollBody()
+                                            ? dispatch(closeFilter()) && scrollOn() 
+                                            : dispatch(openFilter()) && scrollOff()
                                         }}>
                                             {/* times  */}
                                         <div className={`${filterPanel ? 'w-5' : 'w-0 opacity-40'} rotate-45 origin-center transform absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-0.5 bg-text-800 transition-all duration-300`}/>
@@ -104,14 +104,17 @@ const Navbar = () => {
                             </div>
                         </div>
                         <ul className="flex items-center">
-                            {/* <li className="relative">
+                            <li className="relative">
                                 <div 
-                                    onClick={() => dispatch(openLiveChat())}
+                                    onClick={() => {
+                                        dispatch(openLiveChat())
+                                        scrollOff()
+                                    }}
                                     className="relative mr-6 text-xl hover:text-background-active cursor-pointer transition-all duration-300">
-                                    <FontAwesomeIcon icon={faCommentAlt} />
+                                    <FontAwesomeIcon icon={faHeadset} />
                                 </div>
                                 <LiveChat />
-                            </li> */}
+                            </li>
                             <li 
                                 onClick={() => goToTop()}
                                 className="relative mr-6 text-xl hover:text-background-active cursor-pointer transition-all duration-300">
@@ -169,48 +172,66 @@ const Navbar = () => {
             </nav>
 
             {/* Bottom  */}
-            <nav className={`${isShow ? 'bottom-0 opacity-100 pointer-events-auto' : '-bottom-10 opacity-0 pointer-events-none'} lg:hidden fixed w-full py-3 bg-background-900 z-20 transition-all duration-300`}>
+            <nav className={`${isShow ? 'bottom-0 opacity-100 pointer-events-auto' : '-bottom-10 opacity-0 pointer-events-none'} lg:hidden fixed w-full bg-background-900 z-20 transition-all duration-300`}>
                 <ul className="flex items-center">
                     <div 
-                        className="flex-auto flex justify-center" 
-                        onClick={() => goToTop()}>
-                        <NavLink to="/">
-                            <li><FontAwesomeIcon icon={faStore} /></li>
-                        </NavLink>
+                        className={`${location.pathname === '/' && 'bg-background-800'} flex-auto flex justify-center py-4 cursor-pointer hover:bg-background-800 transition-all duration-300`} 
+                        onClick={() => {
+                            goToTop()
+                            history.push('/')
+                        }}>
+                        <li><FontAwesomeIcon icon={faStore} /></li>
                     </div>
                     <div 
-                        className="flex-auto flex justify-center" 
-                        onClick={() => goToTop()}>
-                        <NavLink to="/cart">
-                            <li><FontAwesomeIcon icon={faShoppingBag} /></li>
-                        </NavLink>
+                        className={`${location.pathname === '/cart' && 'bg-background-800'} flex-auto flex justify-center py-4 cursor-pointer hover:bg-background-800 transition-all duration-300`} 
+                        onClick={() => {
+                            goToTop()
+                            history.push('/cart')
+                        }}>
+                        <li><FontAwesomeIcon icon={faShoppingBag} /></li>
                     </div>
                     <div 
-                        className="flex-auto flex justify-center" 
-                        onClick={() => goToTop()}>
-                        <NavLink to="/wishlist">
-                            <li><FontAwesomeIcon icon={faHeart} /></li>
-                        </NavLink>
+                        className={`${location.pathname === '/wishlist' && 'bg-background-800'} flex-auto flex justify-center py-4 cursor-pointer hover:bg-background-800 transition-all duration-300`} 
+                        onClick={() => {
+                            goToTop()
+                            history.push('/wishlist')
+                        }}>
+                        <li><FontAwesomeIcon icon={faHeart} /></li>
+                    </div>
+                    <div
+                        className="flex-auto flex justify-center py-4 cursor-pointer hover:bg-background-800 transition-all duration-300"
+                        onClick={() => {
+                            dispatch(openLiveChat())
+                            scrollOff()
+                        }}>
+                        <li className="">
+                            <div 
+                                className="relative hover:text-background-active cursor-pointer transition-all duration-300">
+                                <FontAwesomeIcon icon={faHeadset} />
+                            </div>
+                        </li>
                     </div>
                     <div 
-                        className="flex-auto flex justify-center" 
-                        onClick={() => goToTop()}>
-                        <NavLink to="/profile">
-                            <li>
-                                <div
-                                    onClick={() => setUserMenu(!userMenu)} 
-                                    className="ring-2 ring-background-active w-8 h-8 rounded-full relative overflow-hidden">
-                                    <Image 
-                                        src="/profile.jpeg"
-                                        alt="profile"
-                                        layout="fill"
-                                        objectFit='cover'
-                                    />
-                                </div>
-                            </li>
-                        </NavLink>
+                        className={`${location.pathname === '/profile' && 'bg-background-800'} flex-auto flex justify-center py-3 cursor-pointer hover:bg-background-800 transition-all duration-300`} 
+                        onClick={() => {
+                            goToTop()
+                            history.push('/profile')
+                        }}>
+                        <li>
+                            <div
+                                onClick={() => setUserMenu(!userMenu)} 
+                                className="ring-2 ring-background-active w-8 h-8 rounded-full relative overflow-hidden">
+                                <Image 
+                                    src="/profile.jpeg"
+                                    alt="profile"
+                                    layout="fill"
+                                    objectFit='cover'
+                                />
+                            </div>
+                        </li>
                     </div>
                 </ul>
+                <LiveChat />
             </nav>
         </>
     )

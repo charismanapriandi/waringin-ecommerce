@@ -46,7 +46,9 @@ const CardCart = ({ item }) => {
             <div className="">
                 {/* -------------------- sm ------------------ */}
                 <div className="absolute top-1 right-1 lg:hidden">
-                    <div onClick={() => setIsCMenu(!isCMenu)}>
+                    <div
+                        className="h-8 w-8 flex justify-center items-center rounded-full cursor-pointer" 
+                        onClick={() => setIsCMenu(!isCMenu)}>
                         <FontAwesomeIcon icon={faEllipsisV} />
                     </div>
                     <DropdownRight status={isCMenu} setStatus={setIsCMenu}>

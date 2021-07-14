@@ -16,8 +16,8 @@ const CardWishlist = ({ item }) => {
     const dispatch = useDispatch()
     const curencyPrice = useMoney(item.price)
     const [isCMenu, setIsCMenu] = useState(false)
-    const scrollBody = useScrollBody()
-    
+    const {scrollOff} = useScrollBody()
+
     return (
         <div className="ring ring-background-800 rounded-xl p-4 flex justify-between mb-4 relative">
             <div className="flex">
@@ -44,7 +44,9 @@ const CardWishlist = ({ item }) => {
             </div>
             {/* -------------------- sm ------------------ */}
             <div className="absolute top-2 right-3 lg:hidden">
-                <div onClick={() => setIsCMenu(!isCMenu)}>
+                <div
+                    className="h-8 w-8 flex justify-center items-center rounded-full cursor-pointer" 
+                    onClick={() => setIsCMenu(!isCMenu)}>
                     <FontAwesomeIcon icon={faEllipsisV} />
                 </div>
                 <DropdownRight status={isCMenu} setStatus={setIsCMenu}>
@@ -52,7 +54,7 @@ const CardWishlist = ({ item }) => {
                         setIsCMenu(false)
                         dispatch(setProductDetile(item))
                         dispatch(openProductDetile())
-                        scrollBody()
+                        scrollOff()
                     }}>add to cart</Button>
                     <Gap height={10} />
                     <ConfirmationDelete />

@@ -13,6 +13,7 @@ import Blocker from "./Blocker"
 import DropdownCenter from "./DropdownCenter"
 import useMoney from "../../hook/useMoney"
 import useScrollBody from "../../hook/useScrollBody"
+import ModalCenter from "./ModalCenter"
 
 const ProductDetile = ({ setStatus, children }) => {
     const [isColor, setIsColor] = useState(false)
@@ -21,25 +22,45 @@ const ProductDetile = ({ setStatus, children }) => {
     const productDetile = useSelector(state => state.status.product_detile)
     const dispatch = useDispatch()
     const payload = useSelector(state => state.memory.product_detile_payload)
-    const scrollBody = useScrollBody()
+    const {scrollOn} = useScrollBody()
+    const [isDetile, setIsDetile] = useState(false)
     
     const color = [
         {
             id: 1,
-            name: 'Merah',
+            name: 'Red',
         },
         {
             id: 2,
-            name: 'Kuning',
+            name: 'Yellow',
         },
         {
             id: 3,
-            name: 'Biru',
+            name: 'Blue',
         },
         {
             id: 4,
-            name: 'Putih',
+            name: 'White',
         },
+        {
+            id: 5,
+            name: 'Gray',
+        },
+    ]
+
+    const storage = [
+        {
+            id: 1,
+            storage: '32GB'
+        },
+        {
+            id: 2,
+            storage: '64GB'
+        },
+        {
+            id: 3,
+            storage: '128GB'
+        }
     ]
     
     return (
@@ -48,18 +69,18 @@ const ProductDetile = ({ setStatus, children }) => {
                 status={productDetile}
                 onClick={() => {
                     dispatch(closeProductDetile())
-                    scrollBody()
+                    scrollOn()
                 }} />
             <div 
-                className={`${productDetile ? 'pointer-events-auto opacity-100 top-0' : 'pointer-events-none opacity-0 top-20'} product-detile h-screen bg-background-900 fixed left-0 lg:left-1/2 lg:container lg:transform lg:-translate-x-1/2 z-40 rounded-t-3xl transition-all duration-300`}>
-                <div className="flex justify-end items-center px-4 py-2 lg:py-4">
+                className={`${productDetile ? 'pointer-events-auto opacity-100 top-0' : 'pointer-events-none opacity-0 top-20'} w-full product-detile h-screen bg-background-900 fixed left-0 lg:left-1/2 lg:container lg:transform lg:-translate-x-1/2 z-40 rounded-t-3xl transition-all duration-300`}>
+                <div className="flex justify-between items-center px-4 py-2 lg:py-4">
+                    <p className="font-bold text-lg">{payload?.name}</p>
                     <div>
                         <Button onClick={() => {
                             dispatch(closeProductDetile())
-                            scrollBody()
+                            scrollOn()
                         }}>
-                            Kembali
-                            {/* <FontAwesomeIcon icon={faChevronDown} /> */}
+                            Back
                         </Button>
                     </div>
                 </div>
@@ -103,63 +124,70 @@ const ProductDetile = ({ setStatus, children }) => {
                             </div>
                         </div> */}
                     </div>
+
                     {/* RIGHT */}
-                    <div className="lg:w-2/3 mt-5 lg:mt-0">
-                        <p className="font-bold text-lg text-center">{payload?.name}</p>
-                        <p className="mt-2">{payload?.body}</p>
-                        <Gap height={20} />
-                        <div className="block lg:flex items-center mb-2">
-                            <p className="font-bold mr-4">Warna</p>
-                            <div className="relative mt-2">
-                                <div className="w-64">
-                                    <Input type="button" defaultValue="--- pilih warna ---" onClick={() => setIsColor(!isColor)}/>
-                                </div>
-                                {/* TODO: Small Device */}
-                                {/* -------------- lg --------------- */}
-                                <DropdownCenter status={isColor} setStatus={setIsColor}>
-                                    { color.map(color => (
-                                        <Radio key={color.id}>{color.name}</Radio>
-                                    )) }
-                                </DropdownCenter>
+                    {/* tab */}
+                    <div className='lg:ml-4 w-full mt-4 lg:mt-0'>
+                        <div className="flex border-b border-background-800">
+                            <div
+                                onClick={() => setIsDetile(false)} 
+                                className={`${!isDetile ? "bg-background-800" : ""} cursor-pointer flex-auto text-center py-2 transition-all duration-300`}>
+                                Overview
+                            </div>
+                            <div
+                                onClick={() => setIsDetile(true)} 
+                                className={`${isDetile ? "bg-background-800" : ""} cursor-pointer flex-auto text-center py-2 transition-all duration-300`}>
+                                Detile
                             </div>
                         </div>
-                        <div className="items-center mb-2 block lg:flex">
-                            <p className="font-bold mr-4">Memori Penyimpanan</p>
-                            <div className="relative">
-                                <div className="w-64">
-                                    <Input 
-                                        type="button" 
-                                        defaultValue="--- pilih option ---" 
-                                        onClick={() => setIsStorage(!isStorage)}/>
+                        {/* tab Content */}
+                        <div className="pb-28">
+                            {/* overview */}
+                            <div className={`${!isDetile ? '' : 'hidden'} py-2`}>{payload?.body}</div>
+                            {/* detile */}
+                            <div className={`${isDetile ? '' : 'hidden'} py-2`}>
+                                <div>
+                                    <div className="mb-4">
+                                        <p className="font-bold mr-4 mb-1">Color</p>
+                                        <Input type="button" defaultValue="--- select color ---" onClick={() => setIsColor(!isColor)}/>
+                                        <ModalCenter status={isColor} setStatus={setIsColor}>
+                                            {color.map(color => (
+                                                <Radio key={color?.id}>{color?.name}</Radio>
+                                            ))}
+                                        </ModalCenter>
+                                    </div>
+                                    <div className="mb-4">
+                                        <p className="font-bold mr-4 mb-1">internal</p>
+                                        <Input type="button" defaultValue="--- select storage ---" onClick={() => setIsStorage(!isStorage)}/>
+                                        <ModalCenter status={isStorage} setStatus={setIsStorage}>
+                                            {storage?.map(storage => (
+                                                <Radio key={storage?.id}>{storage?.storage}</Radio>
+                                            ))}
+                                        </ModalCenter>
+                                    </div>
+                                    <div className="mb-4">
+                                        <p className="font-bold mr-4 mb-1">internal</p>
+                                        <Input type="button" defaultValue="--- select storage ---" onClick={() => setIsStorage(!isStorage)}/>
+                                        <ModalCenter status={isStorage} setStatus={setIsStorage}>
+                                            {storage?.map(storage => (
+                                                <Radio key={storage?.id}>{storage?.storage}</Radio>
+                                            ))}
+                                        </ModalCenter>
+                                    </div>
+                                    <div className="mb-4">
+                                        <p className="font-bold mr-4 mb-1">internal</p>
+                                        <Input type="button" defaultValue="--- select storage ---" onClick={() => setIsStorage(!isStorage)}/>
+                                        <ModalCenter status={isStorage} setStatus={setIsStorage}>
+                                            {storage?.map(storage => (
+                                                <Radio key={storage?.id}>{storage?.storage}</Radio>
+                                            ))}
+                                        </ModalCenter>
+                                    </div>
                                 </div>
-                                {/* TODO: Small Device */}
-                                {/* -------------- lg --------------- */}
-                                <DropdownCenter status={isStorage} setStatus={setIsStorage}>
-                                    { color.map(color => (
-                                        <Radio key={color.id}>{color.name}</Radio>
-                                    )) }
-                                </DropdownCenter>
-                            </div>
-                        </div>
-                        <div className="items-center mb-2 block lg:flex">
-                            <p className="font-bold mr-4">Memori RAM</p>
-                            <div className="relative">
-                                <div className="w-64">
-                                    <Input 
-                                        type="button" 
-                                        defaultValue="--- pilih option ---" 
-                                        onClick={() => setIsRam(!isRam)}/>
-                                </div>
-                                {/* TODO: Small Device */}
-                                {/* -------------- lg --------------- */}
-                                <DropdownCenter status={isRam} setStatus={setIsRam}>
-                                    { color.map(color => (
-                                        <Radio key={color.id}>{color.name}</Radio>
-                                    )) }
-                                </DropdownCenter>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
 
                 {/* { children } */}

@@ -13,7 +13,7 @@ import { Button, ButtonWishlist, Gap } from '../atoms'
 const CardProduct = ({ image, name, price, payload }) => {
     const [favorite, setFavorite] = useState(false)
     const dispatch = useDispatch()
-    const scrollBody = useScrollBody()
+    const {scrollOff} = useScrollBody()
     return (
         <div className="w-64 border border-background-800 rounded-3xl overflow-hidden mb-2 mx-1 relative">
             <div className="w-60 h-60 overflow-hidden mx-auto mt-2 rounded-2xl relative">
@@ -37,7 +37,7 @@ const CardProduct = ({ image, name, price, payload }) => {
                 <Button onClick={() => {
                     dispatch(openProductDetile())
                     dispatch(setProductDetile(payload))
-                    scrollBody()
+                    scrollOff()
                 }}>
                     lihat detail produk
                 </Button>

@@ -21,15 +21,15 @@ const Profile = () => {
                 </div>
             </div>
             {/* tab button */}
-            <div className="mt-4 flex justify-around border-b border-background-800">
+            <div className="mt-4 flex justify-around border-b border-background-800 relative">
                 <div
                     onClick={() => setEdit(false)} 
-                    className={`${!edit ? 'bg-background-800' : ''} flex-auto text-center p-2 cursor-pointer`}>
+                    className={`${!edit ? 'bg-background-800' : ''} flex-auto text-center p-2 cursor-pointer transition-all duration-300`}>
                     Profile
                 </div>
                 <div
                     onClick={() => setEdit(true)} 
-                    className={`${edit ? 'bg-background-800' : ''} flex-auto text-center p-2 cursor-pointer`}>
+                    className={`${edit ? 'bg-background-800' : ''} flex-auto text-center p-2 cursor-pointer transition-all duration-300`}>
                     Edit Profile
                 </div>
             </div>

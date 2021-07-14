@@ -6,15 +6,14 @@
 const useScrollBody = () => {
     const body = document.querySelector('body')
 
-    const scrollBody = () => {
-        if (body.classList.contains('overflow-hidden')) {
-            return body.classList.remove('overflow-hidden')
-        } else {
-            return body.classList.add('overflow-hidden')
-        }
+    const scrollOn = () => {
+        return body.classList.remove('overflow-hidden')
+    }
+    const scrollOff = () => {
+        return body.classList.add('overflow-hidden')
     }
 
-    return scrollBody
+    return {scrollOn, scrollOff}
 }
 
 export default useScrollBody
