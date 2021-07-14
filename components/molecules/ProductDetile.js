@@ -72,7 +72,7 @@ const ProductDetile = ({ setStatus, children }) => {
                     scrollOn()
                 }} />
             <div 
-                className={`${productDetile ? 'pointer-events-auto opacity-100 top-0' : 'pointer-events-none opacity-0 top-20'} w-full modal-bottom h-screen bg-background-900 fixed left-0 lg:left-1/2 lg:container lg:transform lg:-translate-x-1/2 z-40 rounded-t-3xl transition-all duration-300`}>
+                className={`${productDetile ? 'pointer-events-auto opacity-100 bottom-0' : 'pointer-events-none opacity-0 -bottom-20'} w-full modal-bottom h-screen bg-background-900 fixed left-0 lg:left-1/2 lg:container lg:transform lg:-translate-x-1/2 z-40 rounded-t-3xl transition-all duration-300`}>
                 <div className="flex justify-between items-center px-4 py-2 lg:py-4">
                     <p className="font-bold text-lg">{payload?.name}</p>
                     <div>
@@ -100,29 +100,29 @@ const ProductDetile = ({ setStatus, children }) => {
                             />
                         </div>
                         <Gap height={10} />
-                        {/* <div className="flex justify-center">
+                        <div className="flex justify-center">
                             <div className="w-20 h-20 relative rounded-xl overflow-hidden mx-2 hover:opacity-70 cursor-pointer transition-all duration-300">
                                 <Image
-                                    src="/iphone.jpg"
+                                    src={"/images/"+payload?.image}
                                     layout="fill"
                                     objectFit="cover"
                                 />
                             </div>
                             <div className="w-20 h-20 relative rounded-xl overflow-hidden mx-2 hover:opacity-70 cursor-pointer transition-all duration-300">
                                 <Image
-                                    src="/iphone.jpg"
+                                    src={"/images/"+payload?.image}
                                     layout="fill"
                                     objectFit="cover"
                                 />
                             </div>
                             <div className="w-20 h-20 relative rounded-xl overflow-hidden mx-2 hover:opacity-70 cursor-pointer transition-all duration-300">
                                 <Image
-                                    src="/iphone.jpg"
+                                    src={"/images/"+payload?.image}
                                     layout="fill"
                                     objectFit="cover"
                                 />
                             </div>
-                        </div> */}
+                        </div>
                     </div>
 
                     {/* RIGHT */}
@@ -153,24 +153,6 @@ const ProductDetile = ({ setStatus, children }) => {
                                         <ModalCenter status={isColor} setStatus={setIsColor}>
                                             {color.map(color => (
                                                 <Radio key={color?.id}>{color?.name}</Radio>
-                                            ))}
-                                        </ModalCenter>
-                                    </div>
-                                    <div className="mb-4">
-                                        <p className="font-bold mr-4 mb-1">internal</p>
-                                        <Input type="button" defaultValue="--- select storage ---" onClick={() => setIsStorage(!isStorage)}/>
-                                        <ModalCenter status={isStorage} setStatus={setIsStorage}>
-                                            {storage?.map(storage => (
-                                                <Radio key={storage?.id}>{storage?.storage}</Radio>
-                                            ))}
-                                        </ModalCenter>
-                                    </div>
-                                    <div className="mb-4">
-                                        <p className="font-bold mr-4 mb-1">internal</p>
-                                        <Input type="button" defaultValue="--- select storage ---" onClick={() => setIsStorage(!isStorage)}/>
-                                        <ModalCenter status={isStorage} setStatus={setIsStorage}>
-                                            {storage?.map(storage => (
-                                                <Radio key={storage?.id}>{storage?.storage}</Radio>
                                             ))}
                                         </ModalCenter>
                                     </div>

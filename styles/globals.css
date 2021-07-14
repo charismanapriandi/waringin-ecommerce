@@ -16,3 +16,7 @@
 }
 
 * { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+
+.blocker{
+  backdrop-filter: blur(4px);
+}
