@@ -70,7 +70,7 @@ const LiveChat = () => {
                     scrollOn()
                 }} />
             <div 
-                className={`${liveChatStatus ? 'pointer-events-auto opacity-100 bottom-0' : 'pointer-events-none opacity-0 -bottom-20'} product-detile bg-background-900 fixed left-1/2 w-full transform -translate-x-1/2 z-40 overflow-hidden transition-all duration-300`}>
+                className={`${liveChatStatus ? 'pointer-events-auto opacity-100 bottom-0' : 'pointer-events-none opacity-0 -bottom-20'} modal-bottom bg-background-900 fixed left-1/2 w-full transform -translate-x-1/2 z-40 overflow-hidden transition-all duration-300`}>
                 <div className="pb-40 p-4 h-screen overflow-y-auto">
                     <div className="fixed top-0 left-0 w-full z-10 flex justify-between items-center bg-background-active py-2 px-4">
                         <p className="font-bold">Live Chat</p>

@@ -11,8 +11,8 @@
   @apply bg-background-active;
 }
 
-/* .product-detile {
-  height: calc(100vh - 5vh);
-} */
+.modal-bottom {
+  height: calc(100vh - 10vh);
+}
 
 * { -webkit-tap-highlight-color: rgba(0,0,0,0); }
