@@ -143,7 +143,7 @@ const ProductDetile = ({ setStatus, children }) => {
                         {/* tab Content */}
                         <div className="pb-28">
                             {/* overview */}
-                            <div className={`${!isDetile ? '' : 'hidden'} py-2`}>{payload?.body}</div>
+                            <div className={`${!isDetile ? '' : 'hidden'} py-2 text-sm sm:text-base`}>{payload?.body}</div>
                             {/* detile */}
                             <div className={`${isDetile ? '' : 'hidden'} py-2`}>
                                 <div>
@@ -180,7 +180,7 @@ const ProductDetile = ({ setStatus, children }) => {
                     </div>
                     <div>
                         <Button active={true}>
-                            <span className="font-bold mr-4">{useMoney(payload?.price)} </span>add to cart
+                            <p className="font-bold mr-4 text-sm sm:text-base">{useMoney(payload?.price)}<span className="text-sm sm:text-base ml-2 font-normal">add to cart</span> </p>
                         </Button>
                     </div>
                 </div>
