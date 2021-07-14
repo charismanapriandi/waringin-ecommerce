@@ -72,7 +72,7 @@ const ProductDetile = ({ setStatus, children }) => {
                     scrollOn()
                 }} />
             <div 
-                className={`${productDetile ? 'pointer-events-auto opacity-100 top-0' : 'pointer-events-none opacity-0 top-20'} w-full product-detile h-screen bg-background-900 fixed left-0 lg:left-1/2 lg:container lg:transform lg:-translate-x-1/2 z-40 rounded-t-3xl transition-all duration-300`}>
+                className={`${productDetile ? 'pointer-events-auto opacity-100 top-0' : 'pointer-events-none opacity-0 top-20'} w-full modal-bottom h-screen bg-background-900 fixed left-0 lg:left-1/2 lg:container lg:transform lg:-translate-x-1/2 z-40 rounded-t-3xl transition-all duration-300`}>
                 <div className="flex justify-between items-center px-4 py-2 lg:py-4">
                     <p className="font-bold text-lg">{payload?.name}</p>
                     <div>
