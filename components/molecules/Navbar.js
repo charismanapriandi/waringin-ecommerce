@@ -51,7 +51,7 @@ const Navbar = () => {
                     {/* -------------------- sm -------------------- */}
                     <div className="flex items-center lg:hidden justify-between mx-6">
                         <div className="flex items-center">
-                            {location.pathname === '/' && <p className="font-bold text-xl">Waringin Acc</p>}
+                            {location.pathname === '/' && <p className="font-bold text-xl">Waringin</p>}
                         </div>
                         {/* title control  */}
                         {location.pathname === '/cart' && <p className="font-bold text-xl">Cart</p>}
@@ -84,7 +84,7 @@ const Navbar = () => {
                     <div className={`hidden lg:flex flex-col-reverse lg:flex-row flex-wrap lg:flex-nowrap items-center justify-between`}>
                         <ul className="hidden lg:flex items-center">
                             <li className="mr-10">
-                                <p className="font-bold text-xl">WaringinAcc</p>
+                                <p className="font-bold text-xl">Waringin</p>
                             </li>
                             <li className="hover:text-background-active transition-all duration-300" onClick={() => goToTop()}>
                                 <NavLink exact activeClassName="text-text-active font-bold" to="/">Store</NavLink>

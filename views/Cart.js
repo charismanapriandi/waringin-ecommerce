@@ -26,21 +26,22 @@ const Cart = () => {
                     <div className="lg:w-2/3 lg:mr-4">
                         <div className="ring ring-background-800 rounded-xl p-4 flex justify-between">
                             <div>
-                                <p>DATA PENERIMA</p>
-                                <p className="font-bold mt-2">John Doe</p>
+                                <p className="font-bold">DATA PENERIMA</p>
+                                <p className="mt-2 text-text-900">name <span className="text-text-800">John Doe</span></p>
+                                <p className="mt-2 text-text-900">phone <span className="text-text-800">08756662822</span></p>
                             </div>
                             <div>
-                                <Button>GANTI</Button>
+                                <Button>CHANGE</Button>
                             </div>
                         </div>
                         <Gap height={20} />
                         <div className="ring ring-background-800 rounded-xl p-4 flex justify-between">
                             <div>
-                                <p>ALAMAT PENERIMA</p>
-                                <p className="font-bold mt-2">Excepteur ullamco ipsum in sunt eiusmod Lorem sunt consectetur occaecat qui cupidatat excepteur veniam cupidatat.</p>
+                                <p className="font-bold">ALAMAT PENERIMA</p>
+                                <p className="mt-2">Excepteur ullamco ipsum in sunt eiusmod Lorem sunt consectetur occaecat qui cupidatat excepteur veniam cupidatat.</p>
                             </div>
                             <div>
-                                <Button>GANTI</Button>
+                                <Button>CHANGE</Button>
                             </div>
                         </div>
                         <Gap height={20} />

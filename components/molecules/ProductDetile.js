@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
 import Radio from "../atoms/Radio"
 import DropdownLeft from "./DropdownLeft"
-import { Input } from "../atoms"
+import { ButtonWishlist, Input } from "../atoms"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { closeProductDetile } from "../../store/actions/statusAction"
@@ -166,9 +166,7 @@ const ProductDetile = ({ setStatus, children }) => {
 
                 <div className="absolute bottom-2 rounded-xl right-5 bg-background-800 left-5 py-2 px-4 flex justify-end">
                     <div className="mr-4">
-                        <Button>
-                            <FontAwesomeIcon icon={faHeart} />
-                        </Button>
+                        <ButtonWishlist />
                     </div>
                     <div>
                         <Button active={true}>

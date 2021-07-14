@@ -8,7 +8,7 @@ import useMoney from '../../hook/useMoney'
 import useScrollBody from '../../hook/useScrollBody'
 import { setProductDetile } from '../../store/actions/memoryAction'
 import { openProductDetile } from '../../store/actions/statusAction'
-import { Button, Gap } from '../atoms'
+import { Button, ButtonWishlist, Gap } from '../atoms'
 
 const CardProduct = ({ image, name, price, payload }) => {
     const [favorite, setFavorite] = useState(false)
@@ -24,12 +24,7 @@ const CardProduct = ({ image, name, price, payload }) => {
                     objectFit="cover"
                 />
                 <div className="absolute top-2 right-2">
-                <Button onClick={() => setFavorite(!favorite)}>
-                    {favorite 
-                        ? <span className="text-red-600"><FontAwesomeIcon icon={faHeartFill} /></span>
-                        : <FontAwesomeIcon icon={faHeart} />
-                    }
-                </Button>
+                <ButtonWishlist />
             </div>
             </div>
             <div className="px-2 pt-3 pb-2">
