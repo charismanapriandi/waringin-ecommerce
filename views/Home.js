@@ -26,6 +26,7 @@ const Home = () => {
                     <div className="w-full transition-all duration-300">
                         <Input 
                             placeholder="Search" 
+                            id="search"
                             search={true} />
                     </div>
                 </div>

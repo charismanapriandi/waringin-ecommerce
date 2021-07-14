@@ -96,7 +96,7 @@ const LiveChat = () => {
                 </div>
                 <div className="bg-background-800 flex px-4 py-2 absolute bottom-0 w-full">
                     <div className="w-full">
-                        <Input placeholder="masukkan pesan" />
+                        <Input placeholder="masukkan pesan" id="live-chat" />
                     </div>
                     <Gap width={20} />
                     <div>

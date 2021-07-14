@@ -50,9 +50,9 @@ const Filter = ({ children }) => {
             </div>
             <p className="font-bold text-lg mt-10">rentang harga <span className="text-text-900 text-xs">dalam rupiah</span></p>
             <div className="mt-2 flex items-center w-full justify-center">
-                <Input placeholder="min" center={true} />
+                <Input id="min-price" placeholder="min" center={true} />
                 <Gap width={10} />
-                <Input placeholder="max" center={true}/>
+                <Input id="max-price" placeholder="max" center={true}/>
             </div>
             <Gap height={10} />
             <div className="flex justify-center lg:w-full">

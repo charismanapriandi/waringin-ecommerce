@@ -48,14 +48,17 @@ const Profile = () => {
                 <div className={`${edit ? '' : 'hidden'}`}>
                     <Input 
                         label="Receiver"
+                        id="receiver"
                     />
                     <Gap height={10} />
                     <Input 
                         label="Address"
+                        id="address"
                     />
                     <Gap height={10} />
                     <Input 
                         label="Phone"
+                        id="phone"
                     />
                     <Gap height={20} />
                     <div className="flex">

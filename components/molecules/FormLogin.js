@@ -35,7 +35,8 @@ const FormLogin = () => {
                             required: true,
                             pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
                         })} 
-                        placeholder="email" />
+                        placeholder="email"
+                        id="email" />
                         {errors.email?.type === 'required' && 
                             <Error>Email tidak boleh kosong</Error>
                         }
@@ -49,7 +50,8 @@ const FormLogin = () => {
                             minLength: 6
                         })}
                         placeholder="password" 
-                        password={true}/>
+                        password={true}
+                        id="password"/>
                         {errors.password?.type === 'required' && 
                             <Error>Password harus diisi</Error>
                         } 

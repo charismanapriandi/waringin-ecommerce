@@ -113,7 +113,7 @@ const Navbar = () => {
                                     className="relative mr-6 text-xl hover:text-background-active cursor-pointer transition-all duration-300">
                                     <FontAwesomeIcon icon={faHeadset} />
                                 </div>
-                                <LiveChat />
+                                {/* <LiveChat /> */}
                             </li>
                             <li 
                                 onClick={() => goToTop()}
@@ -231,8 +231,8 @@ const Navbar = () => {
                         </li>
                     </div>
                 </ul>
-                <LiveChat />
             </nav>
+            <LiveChat />
         </>
     )
 }
