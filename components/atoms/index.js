@@ -5,6 +5,7 @@ import CheckBox from './CheckBox'
 import Radio from './Radio'
 import ButtonWishlist from './ButtonWishlist'
 import Notification from './Notification'
+import TextArea from './TextArea'
 
 export { 
     Gap,
@@ -13,5 +14,6 @@ export {
     CheckBox,
     Radio,
     ButtonWishlist,
-    Notification
+    Notification,
+    TextArea
 }

@@ -3,7 +3,7 @@ import { faCaretLeft, faCaretRight, faChevronDown, faHourglassEnd } from "@forta
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useDispatch, useSelector } from "react-redux"
 import { closeLiveChat } from "../../store/actions/statusAction"
-import { Button, Gap, Input } from "../atoms"
+import { Button, Gap, TextArea } from "../atoms"
 import Blocker from "./Blocker"
 import Image from 'next/image'
 import useScrollBody from "../../hook/useScrollBody"
@@ -96,7 +96,10 @@ const LiveChat = () => {
                 </div>
                 <div className="bg-background-800 flex px-4 py-2 absolute bottom-0 w-full">
                     <div className="w-full">
-                        <Input placeholder="masukkan pesan" id="live-chat" />
+                       <TextArea 
+                            id="live-chat"
+                            placeholder="type your problem"
+                       />
                     </div>
                     <Gap width={20} />
                     <div>
