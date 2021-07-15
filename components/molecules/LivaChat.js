@@ -7,6 +7,7 @@ import { Button, Gap, TextArea } from "../atoms"
 import Blocker from "./Blocker"
 import Image from 'next/image'
 import useScrollBody from "../../hook/useScrollBody"
+import useDevice from "../../hook/useDevice"
 
 const IncomingMessage = ({ message }) => {
     return (
@@ -20,9 +21,9 @@ const IncomingMessage = ({ message }) => {
                 />
             </div>
             <div className="w-3/4 sm:w-2/3 ml-4 px-4 py-2 bg-background-800 rounded-xl relative">
-                <p className="font-bold mb-2">Admin</p>
-                <p className="">{ message }</p>
-                <p className="text-sm text-text-900 float-right mt-2">12.20</p>
+                <p className="font-bold text-sm mb-2">Admin</p>
+                <p className="text-sm">{ message }</p>
+                <p className="text-xs text-text-900 float-right mt-2">12.20</p>
                 <span className="absolute -left-2 top-0 text-2xl text-background-800">
                     <FontAwesomeIcon icon={faCaretLeft} />
                 </span>
@@ -35,22 +36,13 @@ const OutcomingMessage = ({ message }) => {
     return (
         <div className="flex justify-end py-2">
             <div className="w-3/4 sm:w-2/3 mr-4 px-4 py-2 bg-text-900 rounded-xl relative">
-                <p className="font-bold mb-2">John Doe</p>
-                <p className="">{ message }</p>
-                <p className="text-sm text-background-800 float-right mt-2">12.20</p>
+                <p className="font-bold text-sm mb-2">John Doe</p>
+                <p className="text-sm">{ message }</p>
+                <p className="text-xs text-background-800 float-right mt-2">12.20</p>
                 <span className="absolute -right-2 top-0 text-2xl text-text-900">
                     <FontAwesomeIcon icon={faCaretRight} />
                 </span>
             </div>
-            {/* <div className="w-10 h-10 relative overflow-hidden rounded-full">
-                <Image 
-                    src="/profile.jpeg"
-                    layout="fill"
-                    alt="avatar"
-                    objectFit="cover"
-                />
-            </div> */}
-            
         </div>
     )
 }
@@ -58,19 +50,27 @@ const OutcomingMessage = ({ message }) => {
 const LiveChat = () => {
     const liveChatStatus = useSelector(state => state.status.live_chat)
     const dispatch = useDispatch()
+    const deviceSize = useDevice()
+    const {scrollOn, scrollOff} = useScrollBody()
 
-    const {scrollOn} = useScrollBody()
+    // if (deviceSize >= 1024) {
+    //     scrollOn()
+    // } else {
+    //     scrollOff()
+    // }
 
     return (
         <>
-            <Blocker 
-                status={liveChatStatus}
-                onClick={() => {
-                    dispatch(closeLiveChat())
-                    scrollOn()
-                }} />
+            {/* <div className='lg:hidden'> */}
+                <Blocker 
+                    status={liveChatStatus}
+                    onClick={() => {
+                        dispatch(closeLiveChat())
+                        scrollOn()
+                    }} />
+            {/* </div> */}
             <div 
-                className={`${liveChatStatus ? 'pointer-events-auto opacity-100 bottom-0' : 'pointer-events-none opacity-0 -bottom-20'} modal-bottom bg-background-900 fixed left-1/2 w-full transform -translate-x-1/2 z-40 overflow-hidden transition-all duration-300`}>
+                className={`${liveChatStatus ? 'pointer-events-auto opacity-100 bottom-0' : 'pointer-events-none opacity-0 -bottom-20'} modal-bottom bg-background-900 rounded-t-xl fixed left-1/2 w-full lg:w-96 lg:right-10 lg:left-auto transform -translate-x-1/2 lg:translate-x-0 z-40 overflow-hidden transition-all duration-300`}>
                 <div className="pb-40 p-4 h-screen overflow-y-auto">
                     <div className="fixed top-0 left-0 w-full z-10 flex justify-between items-center bg-background-active py-2 px-4">
                         <p className="font-bold">Live Chat</p>
